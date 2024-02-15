@@ -59,3 +59,5 @@ $route['translate_uri_dashes'] = FALSE;
 
 // controller novan disini
 $route['auth'] = 'ViewNeeds/login';
+//admin
+$route['admin'] = 'ViewNeeds/adminDashboard';
