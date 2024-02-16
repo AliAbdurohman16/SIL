@@ -11,12 +11,15 @@ class ViewNeeds extends CI_Controller
     public function adminDashboard()
     {
         $data = [
-            'title' => "Admin Page"
+            'title' => "Dashboard",
+            'active1' => "active",
+            'active2' => "",
+            'active3' => "",
         ];
-        $this->load->view('admin/partials/header');
-        $this->load->view('admin/partials/sidenav');
-        $this->load->view('admin/partials/navbar');
-        $this->load->view('admin/index');
-        $this->load->view('admin/partials/footer');
+        $this->load->view('admin/partials/header', $data);
+        $this->load->view('admin/partials/sidenav', $data);
+        $this->load->view('admin/partials/navbar', $data);
+        $this->load->view('admin/index', $data);
+        $this->load->view('admin/partials/footer', $data);
     }
 }
