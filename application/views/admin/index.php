@@ -37,7 +37,7 @@
                             </div>
                         </div>
                         <div class="col-4 text-end">
-                            <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                            <div class="icon icon-shape bg-gradient-info shadow text-center border-radius-md">
                                 <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                             </div>
                         </div>
                         <div class="col-4 text-end">
-                            <div class="icon icon-shape bg-gradient-warning shadow text-center border-radius-md">
+                            <div class="icon icon-shape bg-gradient-info shadow text-center border-radius-md">
                                 <i class="ni ni-atom text-lg opacity-10" aria-hidden="true"></i>
                             </div>
                         </div>
@@ -158,7 +158,7 @@
                     borderWidth: 3,
                     backgroundColor: gradientStroke1,
                     fill: true,
-                    data: [50, 80, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    data: [50, 80, 40, 30, 99, 72, 52, 82, 95, 31, 80, 70],
                     maxBarThickness: 6
 
                 },

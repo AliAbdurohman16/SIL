@@ -55,9 +55,11 @@ $route['translate_uri_dashes'] = FALSE;
 
 // controller yora disini
 
+$route['auth'] = 'authController/login';
 
 
 // controller novan disini
-$route['auth'] = 'ViewNeeds/login';
+$route['vauth'] = 'ViewNeeds/login';
 //admin
-$route['admin'] = 'ViewNeeds/adminDashboard';
+$route['vadmin'] = 'ViewNeeds/adminDashboard';
+$route['vadmin/klinik'] = 'ViewNeeds/klinik';
