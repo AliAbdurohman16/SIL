@@ -7,9 +7,6 @@ class Home extends AUTH_Controller {
 	{
         $data = [
             'title' => "Dashboard",
-            'active1' => "active",
-            'active2' => "",
-            'active3' => "",
         ];
         $this->load->view('admin/partials/header', $data);
         $this->load->view('admin/partials/sidenav', $data);

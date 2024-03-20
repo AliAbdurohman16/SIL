@@ -7,9 +7,6 @@ class Klinik extends AUTH_Controller {
 	{
         $data = [
             'title' => "Klinik",
-            'active1' => "",
-            'active2' => "active",
-            'active3' => "",
         ];
         $this->load->view('admin/partials/header', $data);
         $this->load->view('admin/partials/sidenav', $data);
