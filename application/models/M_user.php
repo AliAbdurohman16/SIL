@@ -22,9 +22,11 @@ class M_user extends CI_Model {
 	public function insert($data){
 		date_default_timezone_set('asia/jakarta');
 		$arr = array(
-			'username'		=> $data['username'],
-			'password'		=> sha1($data['password']),
-			'role'		=> $data['role'],
+			'nama'			=> @$data['nama'],
+			'no_hp'			=> @$data['no_hp'],
+			'username'		=> @$data['username'],
+			'password'		=> md5($data['password']),
+			'role'			=> @$data['role'],
 		);
 
 		$response = $this->db->insert('tbl_user', $arr);

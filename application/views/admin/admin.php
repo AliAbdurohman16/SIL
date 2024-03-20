@@ -36,7 +36,7 @@
                     </div>
                     <div class="modal-body">
                         <!-- Formulir -->
-                        <form>
+                        <form action="<?=base_url()?>admin/user/prosesadd" method="post">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <div class="mb-3">
@@ -59,9 +59,9 @@
                                         <label for="exampleFormControlSelect1">role</label>
                                         <select class="form-control" id="role" name="role">
                                             <option>Pilih</option>
-                                            <option>Admin</option>
-                                            <option>Laboran</option>
-                                            <option>Dokter</option>
+                                            <option value="admin">Admin</option>
+                                            <option value="laboran">Laboran</option>
+                                            <option value="dokter">Dokter</option>
 
                                         </select>
 
@@ -69,12 +69,13 @@
                                 </div>
 
                             </div>
-                        </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                        <button type="button" class="btn btn-info">Simpan</button>
+                        <button type="submit" class="btn btn-info">Simpan</button>
                     </div>
+
+                        </form>
                 </div>
             </div>
         </div>
@@ -92,6 +93,7 @@
                         </thead>
                         <tbody>
                             <?php foreach ($data as $key) { ?>
+                            <tr>
                                 <td><?=$key->nama?></td>
                                 <td><?=$key->no_hp?></td>
                                 <td><?=$key->role?></td>
@@ -102,6 +104,7 @@
                                         </button>
                                     </a>
                                 </td>
+                            </tr>
                             <?php 
                             }
                             ?>
