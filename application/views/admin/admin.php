@@ -78,6 +78,58 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade bd-example-modal-lg" id="editModal" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="largeModalLabel">Edit User</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Formulir -->
+                        <form>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <div class="mb-3">
+                                        <label for="noRM" class="form-label">Nama</label>
+                                        <input type="text" class="form-control" id="noRM" placeholder="Nama" name="nama">
+                                    </div>
+                                    <!-- <div class="mb-3">
+                                        <label for="foto" class="form-label">Foto</label>
+                                        <input type="file" class="form-control" id="foto" name="foto">
+                                    </div> -->
+                                    <div class="mb-3">
+                                        <label for="username" class="form-label">Username</label>
+                                        <input type="text" class="form-control" id="username" placeholder="Username" required name="username">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label">Password *</label>
+                                        <input type="password" class="form-control" id="password" placeholder="password" required name="password">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlSelect1">role</label>
+                                        <select class="form-control" id="role" name="role">
+                                            <option>Pilih</option>
+                                            <option>Admin</option>
+                                            <option>Laboran</option>
+                                            <option>Dokter</option>
+
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <button type="button" class="btn btn-info">Simpan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="col-xl-12 col-sm-12">
             <div class="card">
                 <div class="card-body">
@@ -87,22 +139,50 @@
                                 <th>Nama</th>
                                 <th>No HP</th>
                                 <th>Role</th>
-                                <th>Action</th>
+                                <th colspan="2">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($data as $key) { ?>
-                                <td><?=$key->nama?></td>
-                                <td><?=$key->no_hp?></td>
-                                <td><?=$key->role?></td>
+                                <td><?= $key->nama ?></td>
+                                <td><?= $key->no_hp ?></td>
+                                <td><?= $key->role ?></td>
                                 <td>
-                                    <a href="<?=base_url()?>admin/user/delete/<?=$key->id_user?>">
-                                        <button class="btn btn-danger">
-                                            <i class="fa fa-trash"></i> delete
-                                        </button>
-                                    </a>
+
+                                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#editModal">
+                                        <i class=" fa fa-edit"></i> Edit
+                                    </button>
+
+                                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                        <i class=" fa fa-trash"></i> delete
+                                    </button>
+
+
                                 </td>
-                            <?php 
+                                <td>
+
+                                </td>
+                                <div class="modal fade " id="deleteModal" tabindex="-1" aria-labelledby="delete" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="largeModalLabel">Hapus User</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <!-- Formulir -->
+                                                <form action="<?= base_url() ?>admin/user/delete/<?= $key->id_user ?>" method="get">
+                                                    Apakah Anda Yakin ingin menghapus Data?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                                <button type="submit" class="btn btn-info">Simpan</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php
                             }
                             ?>
                         </tbody>
@@ -112,6 +192,7 @@
         </div>
     </div>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
 
 <script>
