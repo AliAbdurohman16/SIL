@@ -36,71 +36,71 @@
                     </div>
                     <div class="modal-body">
                         <!-- Formulir -->
-                        <form>
+                        <form action="<?=base_url()?>admin/klinik/prosesadd" method="post">
                             <div class="row">
                                 <div class="col-lg-6 col-md-12 col-sm-12">
                                     <div class="mb-3">
                                         <label for="noRM" class="form-label">No RM</label>
-                                        <input type="text" class="form-control" id="noRM" placeholder="Masukan No RM">
+                                        <input type="text" class="form-control" id="noRM" name="no_rekam_medis" placeholder="Masukan No RM">
                                     </div>
                                     <div class="mb-3">
                                         <label for="kodeReg" class="form-label">Kode Registrasi</label>
-                                        <input type="text" class="form-control" id="kodeReg" placeholder="Masukan Kode Reg">
+                                        <input type="text" class="form-control" id="kodeReg" name="kode_registrasi" placeholder="Masukan Kode Reg">
                                     </div>
                                     <div class="mb-3">
                                         <label for="jenisPem" class="form-label">Jenis Pemeriksaan *</label>
-                                        <input type="text" class="form-control" id="jenisPem" placeholder="Jenis Pemeriksaan" required>
+                                        <input type="text" class="form-control" id="jenisPem" name="jenis_pemeriksaan" placeholder="Jenis Pemeriksaan" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="pemeriksaan" class="form-label">Parameter *</label>
-                                        <input type="text" class="form-control" id="pemeriksaan" placeholder="Pilih Sampel terlebih dahulu" required>
+                                        <input type="text" class="form-control" id="pemeriksaan" name="parameter" placeholder="Pilih Sampel terlebih dahulu" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="Catatan" class="form-label">Catatan </label>
-                                        <textarea name="catatan" class="form-control" id="" cols="30" rows="3"></textarea>
+                                        <textarea name="catatan" class="form-control" id="" name="catatan" cols="30" rows="3"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-sm-12">
                                     <div class="mb-3">
                                         <label for="nik" class="form-label">NIK *</label>
-                                        <input type="number" class="form-control" id="nik" placeholder="Masukan NIK">
+                                        <input type="number" class="form-control" id="nik" name="nik" placeholder="Masukan NIK">
                                     </div>
                                     <div class="mb-3">
                                         <label for="nama" class="form-label">Nama</label>
-                                        <input type="text" class="form-control" id="nama" placeholder="Masukan nama">
+                                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukan nama">
                                     </div>
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="email" placeholder="Masukan Email">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Masukan Email">
                                     </div>
                                     <div class="mb-3">
                                         <label for="alamat" class="form-label">Alamat</label>
-                                        <input type="text" class="form-control" id="alamat" placeholder="Masukan alamat">
+                                        <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukan alamat">
                                     </div>
                                     <div class="mb-3">
                                         <label for="tempatLahir" class="form-label">Tempat Lahir</label>
-                                        <input type="text" class="form-control" id="tempatLahir" placeholder="Masukan Tempat Lahir">
+                                        <input type="text" class="form-control" id="tempatLahir" name="tempat_lahir" placeholder="Masukan Tempat Lahir">
                                     </div>
                                     <div class="mb-3">
                                         <label for="tanggalLahir" class="form-label">Tanggal Lahir</label>
-                                        <input type="date" class="form-control" id="tanggalLahir" placeholder="Masukan tanggal Lahir">
+                                        <input type="date" class="form-control" id="tanggalLahir"  name="tanggal_lahir" placeholder="Masukan tanggal Lahir">
                                     </div>
                                     <div class="mb-3">
                                         <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
-                                        <input type="text" class="form-control" id="jenisKelamin" placeholder="Masukan Jenis Kelamin">
+                                        <input type="text" class="form-control" id="jenisKelamin" name="jenis_kelamin" placeholder="Masukan Jenis Kelamin">
                                     </div>
                                     <div class="mb-3">
                                         <label for="noHP" class="form-label">No Hp</label>
-                                        <input type="Number" class="form-control" id="noHP" placeholder="Masukan No Hp">
+                                        <input type="Number" class="form-control" id="noHP" name="no_hp" placeholder="Masukan No Hp">
                                     </div>
                                 </div>
                             </div>
-                        </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                        <button type="button" class="btn btn-info">Simpan</button>
+                        <button type="submit" class="btn btn-info">Simpan</button>
                     </div>
+                        </form>
                 </div>
             </div>
         </div>
@@ -112,8 +112,8 @@
                             <tr>
                                 <th>Kode</th>
                                 <th>Nama</th>
-                                <th>Pemeriksaan</th>
-                                <th>Jenis Sample</th>
+                                <!-- <th>Pemeriksaan</th>
+                                <th>Jenis Sample</th> -->
                                 <th>Jenis Pemeriksaan</th>
                                 <th>Status</th>
                                 <th>Tanggal</th>
@@ -121,7 +121,24 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php foreach ($data as $key) { ?>
+                                <tr>
+                                    <td><?=$key->kode_registrasi?></td>
+                                    <td><?=$key->nama?></td>
+                                    <td><?=$key->jenis_pemeriksaan?></td>
+                                    <td><?=$key->status?></td>
+                                    <td><?=$key->tanggal?></td>
+                                    <td>
 
+                                        <a href="<?=base_url()?>admin/klinik/delete/<?=$key->id?>">
+                                            <button class="btn btn-danger">
+                                                <i class="fa fa-trash"></i> delete
+                                            </button>
+                                        </a>
+                                    </td>
+
+                                </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
