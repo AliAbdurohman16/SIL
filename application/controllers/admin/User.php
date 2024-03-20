@@ -22,6 +22,20 @@ class User extends AUTH_Controller {
         $this->load->view('admin/partials/footer', $data);
 	}
 
+    public function prosesadd(){
+        $data = $this->input->post();
+
+        $result = $this->M_user->insert($data);
+
+        if ($result){
+            echo "Ini masuk";
+        }else{
+            echo "ini gagal";
+        }
+
+        redirect('admin/user');
+    }
+
     public function delete($id){
         $result = $this->M_user->delete($id);
 

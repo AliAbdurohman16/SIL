@@ -36,7 +36,7 @@
                     </div>
                     <div class="modal-body">
                         <!-- Formulir -->
-                        <form>
+                        <form action="<?= base_url() ?>admin/user/prosesadd" method="post">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <div class="mb-3">
@@ -59,9 +59,9 @@
                                         <label for="exampleFormControlSelect1">role</label>
                                         <select class="form-control" id="role" name="role">
                                             <option>Pilih</option>
-                                            <option>Admin</option>
-                                            <option>Laboran</option>
-                                            <option>Dokter</option>
+                                            <option value="admin">Admin</option>
+                                            <option value="laboran">Laboran</option>
+                                            <option value="dokter">Dokter</option>
 
                                         </select>
 
@@ -69,12 +69,13 @@
                                 </div>
 
                             </div>
-                        </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                        <button type="button" class="btn btn-info">Simpan</button>
+                        <button type="submit" class="btn btn-info">Simpan</button>
                     </div>
+
+                    </form>
                 </div>
             </div>
         </div>
@@ -162,26 +163,6 @@
                                 <td>
 
                                 </td>
-                                <div class="modal fade " id="deleteModal" tabindex="-1" aria-labelledby="delete" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="largeModalLabel">Hapus User</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <!-- Formulir -->
-                                                <form action="<?= base_url() ?>admin/user/delete/<?= $key->id_user ?>" method="get">
-                                                    Apakah Anda Yakin ingin menghapus Data?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                                                <button type="submit" class="btn btn-info">Simpan</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             <?php
                             }
                             ?>

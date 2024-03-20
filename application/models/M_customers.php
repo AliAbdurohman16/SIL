@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class M_user extends CI_Model {
+class M_customers extends CI_Model {
 
 	public function select($id = '', $email = '', $role = ''){
 		if ($id != ''){
-			$this->db->where('id_user', $id);
+			$this->db->where('id', $id);
 		}
 		if ($email != ''){
 			$this->db->where('email', $email);
@@ -13,8 +13,7 @@ class M_user extends CI_Model {
 		if ($role != ''){
 			$this->db->where('role', $role);
 		}
-		
-					$this->db->from('tbl_user');
+					$this->db->from('tbl_customers');
 		$response = $this->db->get();
 		return $response;
 	}
@@ -22,31 +21,34 @@ class M_user extends CI_Model {
 	public function insert($data){
 		date_default_timezone_set('asia/jakarta');
 		$arr = array(
-			'nama'			=> @$data['nama'],
-			'no_hp'			=> @$data['no_hp'],
-			'username'		=> @$data['username'],
-			'password'		=> md5($data['password']),
-			'role'			=> @$data['role'],
+			'nik'				=> @$data['nik'],
+			'nama'				=> @$data['nama'],
+			'email'				=> @$data['email'],
+			'alamat'			=> $data['alamat'],
+			'tempat_lahir'		=> @$data['tempat_lahir'],
+			'tanggal_lahir'		=> @$data['tanggal_lahir'],
+			'jenis_kelamin'		=> @$data['jenis_kelamin'],
+			'no_hp'				=> @$data['no_hp']
 		);
 
-		$response = $this->db->insert('tbl_user', $arr);
+		$response = $this->db->insert('tbl_customers', $arr);
 		return $response;
 	}
 
 	public function update($data){
 		date_default_timezone_set('asia/jakarta');
 
-		$response = $this->db->update('tbl_user', $data, ['id_user' => $data['id_user']]);
+		$response = $this->db->update('tbl_customers', $data, ['id' => $data['id']]);
 		return $response;
 	}
 
 
-	public function delete($id_user){
+	public function delete($id){
         $arr = array(
-            'id_user' => $id_user
+            'id' => $id
         );
 
-		return $this->db->delete('tbl_user', $arr);
+		return $this->db->delete('tbl_customers', $arr);
 	}
 }
 
