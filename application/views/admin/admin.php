@@ -43,10 +43,10 @@
                                         <label for="noRM" class="form-label">Nama</label>
                                         <input type="text" class="form-control" id="noRM" placeholder="Nama" name="nama">
                                     </div>
-                                    <div class="mb-3">
+                                    <!-- <div class="mb-3">
                                         <label for="foto" class="form-label">Foto</label>
                                         <input type="file" class="form-control" id="foto" name="foto">
-                                    </div>
+                                    </div> -->
                                     <div class="mb-3">
                                         <label for="username" class="form-label">Username</label>
                                         <input type="text" class="form-control" id="username" placeholder="Username" required name="username">
@@ -85,14 +85,26 @@
                         <thead>
                             <tr>
                                 <th>Nama</th>
-                                <th>Foto</th>
                                 <th>No HP</th>
                                 <th>Role</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-
+                            <?php foreach ($data as $key) { ?>
+                                <td><?=$key->nama?></td>
+                                <td><?=$key->no_hp?></td>
+                                <td><?=$key->role?></td>
+                                <td>
+                                    <a href="<?=base_url()?>admin/user/delete/<?=$key->id_user?>">
+                                        <button class="btn btn-danger">
+                                            <i class="fa fa-trash"></i> delete
+                                        </button>
+                                    </a>
+                                </td>
+                            <?php 
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>
