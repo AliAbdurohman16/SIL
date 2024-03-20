@@ -63,3 +63,4 @@ $route['vauth'] = 'ViewNeeds/login';
 //admin
 $route['vadmin'] = 'ViewNeeds/adminDashboard';
 $route['vadmin/klinik'] = 'ViewNeeds/klinik';
+$route['vadmin/admin'] = 'ViewNeeds/admin';
