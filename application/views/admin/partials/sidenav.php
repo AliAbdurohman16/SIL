@@ -2,8 +2,8 @@
     <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " data-color="info" id="sidenav-main">
         <div class="sidenav-header">
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-            <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html " target="_blank">
-                <img src="<?= base_url('assets/img/logo-ct-dark.png') ?>" class="navbar-brand-img h-100" alt="main_logo">
+            <a class="navbar-brand m-0" href="<?=base_url()?>">
+                <img src="<?= base_url('public/assets/img/logo-ct-dark.png') ?>" class="navbar-brand-img h-100" alt="main_logo">
                 <span class="ms-1 font-weight-bold">Sistem Informasi Lab</span>
             </a>
         </div>
@@ -13,7 +13,7 @@
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Dashboard</h6>
 
                 <li class="nav-item ">
-                    <a class="nav-link  <?= $active1 ?>" href="../pages/dashboard.html">
+                    <a class="nav-link  <?= $active1 ?>" href="<?=base_url()?>">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <title>shop </title>

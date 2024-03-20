@@ -129,7 +129,7 @@
 </div>
 
 </div>
-<script src="<?= base_url('assets/js/plugins/chartjs.min.js') ?>"></script>
+<script src="<?= base_url('public/assets/js/plugins/chartjs.min.js') ?>"></script>
 <script>
     var ctx2 = document.getElementById("chart-line").getContext("2d");
 
