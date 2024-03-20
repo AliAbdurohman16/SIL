@@ -12,13 +12,13 @@
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <!-- Nucleo Icons -->
-    <link href="<?= base_url('/assets/css/nucleo-icons.css') ?>" rel="stylesheet" />
-    <link href="<?= base_url('/assets/css/nucleo-svg.css') ?>" rel="stylesheet" />
+    <link href="<?= base_url('/public/assets/css/nucleo-icons.css') ?>" rel="stylesheet" />
+    <link href="<?= base_url('/public/assets/css/nucleo-svg.css') ?>" rel="stylesheet" />
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <link href="<?= base_url('/assets/css/nucleo-svg.css') ?>" rel="stylesheet" />
+    <link href="<?= base_url('/public/assets/css/nucleo-svg.css') ?>" rel="stylesheet" />
     <!-- CSS Files -->
-    <link id="pagestyle" href="<?= base_url('/assets/css/soft-ui-dashboard.css') ?>" rel="stylesheet" />
+    <link id="pagestyle" href="<?= base_url('/public/assets/css/soft-ui-dashboard.css') ?>" rel="stylesheet" />
     <!-- Nepcha Analytics (nepcha.com) -->
     <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
 </head>
@@ -39,10 +39,10 @@
                                     <p class="mb-0">Silahkan Masukan Email dan Password Anda</p>
                                 </div>
                                 <div class="card-body">
-                                    <form role="form" action="<?= base_url('') ?>" method="POST">
+                                    <form action="<?= base_url() ?>Auth/secure" method="post">
                                         <label>Email</label>
                                         <div class="mb-3">
-                                            <input type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon" name="email">
+                                            <input type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon" name="username">
                                         </div>
                                         <label>Password</label>
                                         <div class="mb-3">
@@ -62,7 +62,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="oblique position-absolute top-0 h-100 d-md-block d-none me-n8">
-                                <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6" style="background-image:url('<?= base_url('/assets/img/curved7.jpg') ?>')"></div>
+                                <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6" style="background-image:url('<?= base_url('/public/assets/img/curved7.jpg') ?>')"></div>
                             </div>
                         </div>
                     </div>
@@ -87,10 +87,10 @@
     </footer>
     <!-- -------- END FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
     <!--   Core JS Files   -->
-    <script src="<?= base_url('/assets/js/core/popper.min.js') ?>"></script>
-    <script src="<?= base_url('/assets/js/core/bootstrap.min.js') ?>"></script>
-    <script src="<?= base_url('/assets/js/plugins/perfect-scrollbar.min.js') ?>"></script>
-    <script src="<?= base_url('/assets/js/plugins/smooth-scrollbar.min.js') ?>"></script>
+    <script src="<?= base_url('/public/assets/js/core/popper.min.js') ?>"></script>
+    <script src="<?= base_url('/public/assets/js/core/bootstrap.min.js') ?>"></script>
+    <script src="<?= base_url('/public/assets/js/plugins/perfect-scrollbar.min.js') ?>"></script>
+    <script src="<?= base_url('/public/assets/js/plugins/smooth-scrollbar.min.js') ?>"></script>
     <script>
         var win = navigator.platform.indexOf('Win') > -1;
         if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -103,7 +103,7 @@
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="<?= base_url('/assets/js/soft-ui-dashboard.min.js?v=1.0.7') ?>"></script>
+    <script src="<?= base_url('/public/assets/js/soft-ui-dashboard.min.js?v=1.0.7') ?>"></script>
 </body>
 
 </html>
