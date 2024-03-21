@@ -19,6 +19,8 @@
     <link href="<?= base_url('/public/assets/css/nucleo-svg.css') ?>" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="<?= base_url('/public/assets/css/soft-ui-dashboard.css') ?>" rel="stylesheet" />
+    <link rel="stylesheet" href="<?= base_url('public/assets/sweetalert2/dist/sweetalert2.min.css') ?>">
+
     <!-- Nepcha Analytics (nepcha.com) -->
     <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
 </head>
@@ -70,22 +72,43 @@
             </div>
         </section>
     </main>
-    <!-- -------- START FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
-    <footer class="footer py-5">
-        <div class="container">
+    <script src="<?= base_url('public/assets/sweetalert2/dist/sweetalert2.min.js') ?>"></script>
 
-            <div class="row">
-                <div class="col-8 mx-auto text-center mt-1">
-                    <p class="mb-0 text-secondary">
-                        Copyright © <script>
+    <script>
+        <?php if ($this->session->flashdata('success')) : ?>
+            // Notifikasi success
+            Swal.fire({
+                title: 'Success!',
+                text: '<?= $this->session->flashdata('success') ?>',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+        <?php elseif ($this->session->flashdata('error')) : ?>
+            // Notifikasi error
+            Swal.fire({
+                title: 'Error!',
+                text: '<?= $this->session->flashdata('error') ?>',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        <?php endif; ?>
+    </script>
+    <!-- -- -- -- --START FOOTER 3 w / COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT-- -- -- - -- >
+    < footer class="footer py-5">
+        < div class="container">
+
+            < div class="row">
+                < div class="col-8 mx-auto text-center mt-1">
+                    < p class="mb-0 text-secondary">
+                        Copyright© < script>
                             document.write(new Date().getFullYear())
-                        </script> Sistem Informasi Laboratiorum
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- -------- END FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
+                        </> Sistem Informasi Laboratiorum
+                        </p>
+                        </div>
+                        </div>
+                        </div>
+                        </footer>
+                        <!-- -------- END FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
     <!--   Core JS Files   -->
     <script src="<?= base_url('/public/assets/js/core/popper.min.js') ?>"></script>
     <script src="<?= base_url('/public/assets/js/core/bootstrap.min.js') ?>"></script>

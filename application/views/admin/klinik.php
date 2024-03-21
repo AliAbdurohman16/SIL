@@ -36,7 +36,7 @@
                     </div>
                     <div class="modal-body">
                         <!-- Formulir -->
-                        <form action="<?=base_url()?>admin/klinik/prosesadd" method="post">
+                        <form action="<?= base_url() ?>admin/klinik/prosesadd" method="post">
                             <div class="row">
                                 <div class="col-lg-6 col-md-12 col-sm-12">
                                     <div class="mb-3">
@@ -83,7 +83,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="tanggalLahir" class="form-label">Tanggal Lahir</label>
-                                        <input type="date" class="form-control" id="tanggalLahir"  name="tanggal_lahir" placeholder="Masukan tanggal Lahir">
+                                        <input type="date" class="form-control" id="tanggalLahir" name="tanggal_lahir" placeholder="Masukan tanggal Lahir">
                                     </div>
                                     <div class="mb-3">
                                         <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
@@ -100,7 +100,7 @@
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                         <button type="submit" class="btn btn-info">Simpan</button>
                     </div>
-                        </form>
+                    </form>
                 </div>
             </div>
         </div>
@@ -123,14 +123,14 @@
                         <tbody>
                             <?php foreach ($data as $key) { ?>
                                 <tr>
-                                    <td><?=$key->kode_registrasi?></td>
-                                    <td><?=$key->nama?></td>
-                                    <td><?=$key->jenis_pemeriksaan?></td>
-                                    <td><?=$key->status?></td>
-                                    <td><?=$key->tanggal?></td>
+                                    <td><?= $key->kode_registrasi ?></td>
+                                    <td><?= $key->nama ?></td>
+                                    <td><?= $key->jenis_pemeriksaan ?></td>
+                                    <td><?= $key->status ?></td>
+                                    <td><?= $key->tanggal ?></td>
                                     <td>
 
-                                        <a href="<?=base_url()?>admin/klinik/delete/<?=$key->id?>">
+                                        <a href="<?= base_url() ?>admin/klinik/delete/<?= $key->id ?>">
                                             <button class="btn btn-danger">
                                                 <i class="fa fa-trash"></i> delete
                                             </button>
