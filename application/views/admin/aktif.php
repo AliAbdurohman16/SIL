@@ -53,43 +53,60 @@
                                         <button class="btn <?=($key->isCito)?"btn-success":"btn-success"?>" data-bs-toggle="modal" data-bs-target="#hasilModal<?=$key->id?>">
                                             <i class="fa fa-edit"></i> HASIL
                                         </button>
-                                    </td>
-
-                                </tr>
-                                <div class="modal fade bd-example-modal-lg" id="hasilModal<?=$key->id?>" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="largeModalLabel">Hasil Pemeriksaan</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <!-- Formulir -->
-                                                <form action="<?= base_url() ?>admin/aktif/editProccess/<?=$key->id?>" method="post">
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                                            <div class="mb-3">
-                                                                <label for="noRM" class="form-label">Nama</label>
-                                                                <input type="text" class="form-control" id="noRM" placeholder="Nama" name="nama" value="<?=$key->nama?>">
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="jenis_pemeriksaan" class="form-label">Jenis Pemeriksaan</label>
-                                                                <input type="text" class="form-control" id="jenis_pemeriksaan" placeholder="jenis_pemeriksaan" required name="jenis_pemeriksaan" value="<?=$key->jenis_pemeriksaan?>">
-                                                            </div>
-                                                            <div class="mb-3">
-                                                            </div>
-                                                        </div>
-
+                                        <div class="modal fade bd-example-modal-lg" id="hasilModal<?=$key->id?>" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="largeModalLabel">Hasil Pemeriksaan</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
+                                                    <div class="modal-body">
+                                                        <!-- Formulir -->
+                                                        <form action="<?= base_url() ?>admin/aktif/editProccess/<?=$key->id?>" method="post">
+                                                            <div class="row">
+                                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                                    <div class="mb-3">
+                                                                        <label for="noRM" class="form-label">Nama</label>
+                                                                        <input type="text" class="form-control" id="noRM" placeholder="Nama" name="nama" value="<?=$key->nama?>">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="jenis_pemeriksaan" class="form-label">Jenis Pemeriksaan</label>
+                                                                        <input type="text" class="form-control" id="jenis_pemeriksaan" placeholder="jenis_pemeriksaan" required name="jenis_pemeriksaan" value="<?=$key->jenis_pemeriksaan?>">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <table width="100%">
+                                                                            <tr>
+                                                                                <th>Parameter</th>
+                                                                                <th>Hasil</th>
+                                                                                <th>Tgl Pengujian</th>
+                                                                                <th>Tgl Selesai</th>
+                                                                            </tr>
+                                                                            <?php foreach ($this->M_hasil_pemeriksaan->select('', ['kode_registrasi' => $key->kode_registrasi])->result() as $value) { ?>
+                                                                                <tr>
+                                                                                    <td><input type="text" class="form-control" name="parameter[]" value="<?=$value->parameter?>"></td>
+                                                                                    <td><input type="text" class="form-control" name="hasil[]"></td>
+                                                                                    <td><input type="date" class="form-control" name="tgl_pengujian[]"></td>
+                                                                                    <td><input type="date" class="form-control" name="tgl_selesai[]"></td>
+                                                                                </tr>
+                                                                            <?php } ?>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                                        <button type="submit" class="btn btn-info">Simpan</button>
+                                                    </div>
+                                                        </form>
+                                                </div>
                                             </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                                                <button type="submit" class="btn btn-info">Simpan</button>
-                                            </div>
-                                                </form>
                                         </div>
-                                    </div>
-                                </div>
+                                    </td>
+                                    
+                                </tr>
+                                
                             <?php } ?>
                         </tbody>
                     </table>
