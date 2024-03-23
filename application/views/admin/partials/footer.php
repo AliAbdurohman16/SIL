@@ -19,27 +19,7 @@
 </footer>
 </div>
 </main>
-<script src="<?= base_url('public/assets/sweetalert2/dist/sweetalert2.min.js') ?>"></script>
 
-<script>
-    <?php if ($this->session->flashdata('success')) : ?>
-        // Notifikasi success
-        Swal.fire({
-            title: 'Success!',
-            text: '<?= $this->session->flashdata('success') ?>',
-            icon: 'success',
-            confirmButtonText: 'OK'
-        });
-    <?php elseif ($this->session->flashdata('error')) : ?>
-        // Notifikasi error
-        Swal.fire({
-            title: 'Error!',
-            text: '<?= $this->session->flashdata('error') ?>',
-            icon: 'error',
-            confirmButtonText: 'OK'
-        });
-    <?php endif; ?>
-</script>
 <script src="<?= base_url('public/assets/js/core/popper.min.js') ?>"></script>
 <script src="<?= base_url('public/assets/js/core/bootstrap.min.js') ?>"></script>
 <script src="<?= base_url('public/assets/js/plugins/perfect-scrollbar.min.js') ?>"></script>

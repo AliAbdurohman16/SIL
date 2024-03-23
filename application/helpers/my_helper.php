@@ -28,7 +28,7 @@
 	}
 
 	function base_name(){
-		$name = "Supply Chain Management";
+		$name = "Sistem Informasi Laboratorium";
 		return $name;
 	}
 

@@ -5,7 +5,7 @@ class Klinik extends AUTH_Controller {
 	function __construct()
 	{
 		parent::__construct();
-        $this->load->model('M_rekam_medis');
+        $this->load->model('M_pemeriksaan');
         $this->load->model('M_customers');
 	}
 	
@@ -13,7 +13,7 @@ class Klinik extends AUTH_Controller {
 	{
         $data = [
             'title' => "Klinik",
-            'data'  => $this->M_rekam_medis->select()->result()
+            'data'  => $this->M_pemeriksaan->select()->result()
         ];
         $this->load->view('admin/partials/header', $data);
         $this->load->view('admin/partials/sidenav', $data);
@@ -25,31 +25,37 @@ class Klinik extends AUTH_Controller {
     public function prosesadd(){
         $data = $this->input->post();
 
-        //saving to customers
-        $resultCust = $this->M_customers->insert($data);
+        //checking customer
+        $cekData = $this->M_customers->select('', ['no_rekam_medis' => $data['no_rekam_medis']]);
+        if ($cekData->num_rows() > 0){
 
-        if ($resultCust){
-            $result = $this->M_rekam_medis->insert($data);
-
-            if ($result){
-                echo "Ini masuk";
-            }else{
-                echo "ini gagal";
-            }
+        }else{
+            //saving to customers
+            $resultCust = $this->M_customers->insert($data);
         }
 
-        redirect('admin/klinik');
+        $result = $this->M_pemeriksaan->insert($data);
+
+		if ($result){
+			$this->session->set_flashdata('msg', swal("succ", "Data berhasil ditambahkan."));
+		}else{
+			$this->session->set_flashdata('msg', swal("err", "Data gagal ditambahkan."));
+		}
+        
+        redirect($this->uri->segment(1)."/".$this->uri->segment(2));
     }
 
+    
+
     public function delete($id){
-        $result = $this->M_rekam_medis->delete($id);
+        $result = $this->M_pemeriksaan->delete($id);
 
-        if ($result){
-            echo "ini sukses";
-        }else{
-            echo "ini gagal";
-        }
+		if ($result){
+			$this->session->set_flashdata('msg', swal("succ", "Data berhasil dihapus"));
+		}else{
+			$this->session->set_flashdata('msg', swal("err", "Data gagal dihapus"));
+		}
 
-        redirect('admin/klinik');
+        redirect($this->uri->segment(1)."/".$this->uri->segment(2));
     }
 }

@@ -5,6 +5,8 @@ class AUTH_Controller extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('M_user');
+		$this->load->model('M_parameter');
+		$this->load->model('M_jenis_pemeriksaan');
 		date_default_timezone_set('asia/jakarta');
 
 		$this->session->set_flashdata('segment', explode('/', $this->uri->uri_string()));

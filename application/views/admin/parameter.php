@@ -12,7 +12,7 @@
                                     <div class="icon icon-shape bg-gradient-info shadow text-center border-radius-md">
                                         <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
                                     </div>
-                                    Data Admin
+                                    Data Parameter
                                 </h5>
                             </div>
                         </div>
@@ -32,39 +32,17 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="largeModalLabel">Tambah User</h5>
+                        <h5 class="modal-title" id="largeModalLabel">Tambah Parameter</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <!-- Formulir -->
-                        <form action="<?= base_url() ?>admin/user/prosesadd" method="post">
+                        <form action="<?= base_url() ?>admin/parameter/prosesadd" method="post">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <div class="mb-3">
                                         <label for="noRM" class="form-label">Nama</label>
                                         <input type="text" class="form-control" id="noRM" placeholder="Nama" name="nama">
-                                    </div>
-                                    <!-- <div class="mb-3">
-                                        <label for="foto" class="form-label">Foto</label>
-                                        <input type="file" class="form-control" id="foto" name="foto">
-                                    </div> -->
-                                    <div class="mb-3">
-                                        <label for="username" class="form-label">Username</label>
-                                        <input type="text" class="form-control" id="username" placeholder="Username" required name="username">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="password" class="form-label">Password *</label>
-                                        <input type="password" class="form-control" id="password" placeholder="password" required name="password">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlSelect1">role</label>
-                                        <select class="form-control" id="role" name="role">
-                                            <?php $arr = array('Pilih', 'Admin', 'ATLM', 'Validator'); ?>
-                                                <?php for($i = 0; $i < count($arr); $i++){ ?>
-                                                    <option value="<?=$arr[$i]?>"><?=ucwords($arr[$i])?></option>
-                                                <?php } ?>
-                                        </select>
-
                                     </div>
                                 </div>
 
@@ -87,8 +65,6 @@
                         <thead>
                             <tr>
                                 <th>Nama</th>
-                                <th>No HP</th>
-                                <th>Role</th>
                                 <th colspan="2">Action</th>
                             </tr>
                         </thead>
@@ -96,15 +72,13 @@
                             <?php foreach ($data as $key) { ?>
                                 <tr>
                                 <td><?= $key->nama ?></td>
-                                <td><?= $key->no_hp ?></td>
-                                <td><?= $key->role ?></td>
                                 <td>
 
-                                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#editModal<?=$key->id_user?>">
+                                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#editModal<?=$key->id?>">
                                         <i class=" fa fa-edit"></i> Edit
                                     </button>
 
-                                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?=$key->id_user?>">
+                                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?=$key->id?>">
                                         <i class=" fa fa-trash"></i> delete
                                     </button>
 
@@ -114,16 +88,16 @@
 
                                 </td>
                             </tr>
-                                <div class="modal fade " id="deleteModal<?=$key->id_user?>" tabindex="-1" aria-labelledby="delete" aria-hidden="true">
+                                <div class="modal fade " id="deleteModal<?=$key->id?>" tabindex="-1" aria-labelledby="delete" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="largeModalLabel">Hapus User</h5>
+                                                <h5 class="modal-title" id="largeModalLabel">Hapus Parameter</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
                                                 <!-- Formulir -->
-                                                <form action="<?= base_url() ?>admin/user/delete/<?= $key->id_user ?>" method="get">
+                                                <form action="<?= base_url() ?>admin/parameter/delete/<?= $key->id ?>" method="get">
                                                     Apakah Anda Yakin ingin menghapus Data?
                                             </div>
                                             <div class="modal-footer">
@@ -134,43 +108,21 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="modal fade bd-example-modal-lg" id="editModal<?=$key->id_user?>" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
+                                <div class="modal fade bd-example-modal-lg" id="editModal<?=$key->id?>" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="largeModalLabel">Edit User</h5>
+                                                <h5 class="modal-title" id="largeModalLabel">Edit Parameter</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
                                                 <!-- Formulir -->
-                                                <form action="<?= base_url() ?>admin/user/editProccess/<?=$key->id_user?>" method="post">
+                                                <form action="<?= base_url() ?>admin/parameter/editProccess/<?=$key->id?>" method="post">
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12">
                                                             <div class="mb-3">
-                                                                <label for="noRM" class="form-label">Nama</label>
-                                                                <input type="text" class="form-control" id="noRM" placeholder="Nama" name="nama" value="<?=$key->nama?>">
-                                                            </div>
-                                                            <!-- <div class="mb-3">
-                                                                <label for="foto" class="form-label">Foto</label>
-                                                                <input type="file" class="form-control" id="foto" name="foto">
-                                                            </div> -->
-                                                            <div class="mb-3">
-                                                                <label for="username" class="form-label">Username</label>
-                                                                <input type="text" class="form-control" id="username" placeholder="Username" required name="username" value="<?=$key->username?>">
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="password" class="form-label">Password *</label>
-                                                                <input type="password" class="form-control" id="password" placeholder="password" name="password">
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="exampleFormControlSelect1">role</label>
-                                                                <?php $arr = array('Pilih', 'Admin', 'ATLM', 'Validator'); ?>
-                                                                <select class="form-control" id="role" name="role">
-                                                                    <?php for($i = 0; $i < count($arr); $i++){ ?>
-                                                                    <option value="<?=$arr[$i]?>" <?=($key->role == $arr[$i])?'selected':''?>><?=ucwords($arr[$i])?></option>
-                                                                    <?php } ?>
-                                                                </select>
-
+                                                                <label for="nama" class="form-label">Nama</label>
+                                                                <input type="text" class="form-control" id="nama" placeholder="Nama" name="nama" value="<?=$key->nama?>">
                                                             </div>
                                                         </div>
 

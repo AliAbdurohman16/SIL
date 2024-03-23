@@ -1,3 +1,4 @@
+<?=$this->session->flashdata('msg')?>
 <div class="container-fluid py-4">
     <div class="row my-4">
         <div class="col-xl-12 col-sm-12 mb-xl-0 mb-4">
@@ -45,20 +46,38 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="kodeReg" class="form-label">Kode Registrasi</label>
-                                        <input type="text" class="form-control" id="kodeReg" name="kode_registrasi" placeholder="Masukan Kode Reg">
+                                        <input type="text" class="form-control" id="kodeReg" name="kode_registrasi" placeholder="Masukan Kode Reg" value="<?=$this->M_pemeriksaan->generateCode()?>">
                                     </div>
                                     <div class="mb-3">
                                         <label for="jenisPem" class="form-label">Jenis Pemeriksaan *</label>
-                                        <input type="text" class="form-control" id="jenisPem" name="jenis_pemeriksaan" placeholder="Jenis Pemeriksaan" required>
+                                        <select name="jenis_pemeriksaan" class="form-control" id="jenisPem" required>
+                                            <?php foreach ($this->M_jenis_pemeriksaan->select()->result() as $key) { ?>
+                                            <option value="<?=$key->nama?>"><?=$key->nama?></option>
+                                            <?php } ?>
+                                        </select>
                                     </div>
                                     <div class="mb-3">
                                         <label for="pemeriksaan" class="form-label">Parameter *</label>
-                                        <input type="text" class="form-control" id="pemeriksaan" name="parameter" placeholder="Pilih Sampel terlebih dahulu" required>
+                                        <select name="parameter" class="form-control" id="pemeriksaan" required>
+                                            <?php foreach ($this->M_parameter->select()->result() as $key) { ?>
+                                            <option value="<?=$key->nama?>"><?=$key->nama?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="cito" class="form-label">CITO</label>
+                                        <select name="isCito" class="form-control" id="cito">
+                                        <?php $arr = array('Not Cito', 'Cito'); ?>
+                                        <?php for($i = 0; $i < count($arr); $i++){ ?>
+                                            <option value="<?=$i?>"><?=$arr[$i]?></option>
+                                        <?php } ?>
+                                        </select>
                                     </div>
                                     <div class="mb-3">
                                         <label for="Catatan" class="form-label">Catatan </label>
                                         <textarea name="catatan" class="form-control" id="" name="catatan" cols="30" rows="3"></textarea>
                                     </div>
+                                    
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-sm-12">
                                     <div class="mb-3">
@@ -112,8 +131,8 @@
                             <tr>
                                 <th>Kode</th>
                                 <th>Nama</th>
-                                <!-- <th>Pemeriksaan</th>
-                                <th>Jenis Sample</th> -->
+                                <!-- <th>Pemeriksaan</th> -->
+                                <!-- <th>Jenis Sample</th> -->
                                 <th>Jenis Pemeriksaan</th>
                                 <th>Status</th>
                                 <th>Tanggal</th>
@@ -122,16 +141,16 @@
                         </thead>
                         <tbody>
                             <?php foreach ($data as $key) { ?>
-                                <tr>
+                                <tr class="<?=($key->isCito)?"bg bg-danger text-white":""?>">
                                     <td><?= $key->kode_registrasi ?></td>
                                     <td><?= $key->nama ?></td>
                                     <td><?= $key->jenis_pemeriksaan ?></td>
-                                    <td><?= $key->status ?></td>
+                                    <td><?= $key->status_nama ?></td>
                                     <td><?= $key->tanggal ?></td>
                                     <td>
 
                                         <a href="<?= base_url() ?>admin/klinik/delete/<?= $key->id ?>">
-                                            <button class="btn btn-danger">
+                                            <button class="btn <?=($key->isCito)?"btn-white":"btn-danger"?>">
                                                 <i class="fa fa-trash"></i> delete
                                             </button>
                                         </a>
@@ -150,6 +169,8 @@
 
 <script>
     $(document).ready(function() {
-        $('#myTable').DataTable();
+        $('#myTable').DataTable({
+            "ordering": false,
+        });
     });
 </script>

@@ -28,6 +28,7 @@
 
 
     <link rel="stylesheet" href="<?= base_url('public/assets/sweetalert2/dist/sweetalert2.min.css') ?>">
+    <script src="<?= base_url('public/assets/sweetalert2/dist/sweetalert2.min.js') ?>"></script>
 
 </head>
 </head>
