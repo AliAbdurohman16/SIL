@@ -37,7 +37,7 @@
                     </div>
                     <div class="modal-body">
                         <!-- Formulir -->
-                        <form action="<?= base_url() ?>admin/jenispemeriksaan/prosesadd" method="post">
+                        <form action="<?= base_url() ?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/prosesadd" method="post">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <div class="mb-3">
@@ -97,7 +97,7 @@
                                             </div>
                                             <div class="modal-body">
                                                 <!-- Formulir -->
-                                                <form action="<?= base_url() ?>admin/jenispemeriksaan/delete/<?= $key->id ?>" method="get">
+                                                <form action="<?= base_url() ?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/delete/<?= $key->id ?>" method="get">
                                                     Apakah Anda Yakin ingin menghapus Data?
                                             </div>
                                             <div class="modal-footer">
@@ -117,7 +117,7 @@
                                             </div>
                                             <div class="modal-body">
                                                 <!-- Formulir -->
-                                                <form action="<?= base_url() ?>admin/jenispemeriksaan/editProccess/<?=$key->id?>" method="post">
+                                                <form action="<?= base_url() ?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/editProccess/<?=$key->id?>" method="post">
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12">
                                                             <div class="mb-3">

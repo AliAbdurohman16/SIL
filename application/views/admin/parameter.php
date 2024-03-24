@@ -37,9 +37,19 @@
                     </div>
                     <div class="modal-body">
                         <!-- Formulir -->
-                        <form action="<?= base_url() ?>admin/parameter/prosesadd" method="post">
+                        <form action="<?= base_url() ?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/prosesadd" method="post">
                             <div class="row">
+                                
                                 <div class="col-lg-12 col-md-12 col-sm-12">
+
+                                    <div class="mb-3">
+                                        <label for="jenisPem" class="form-label">Jenis Pemeriksaan</label>
+                                        <select name="jenis_pemeriksaan" class="form-control" id="jenisPem" required>
+                                            <?php foreach ($this->M_jenis_pemeriksaan->select()->result() as $key) { ?>
+                                            <option value="<?=$key->nama?>"><?=$key->nama?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
                                     <div class="mb-3">
                                         <label for="noRM" class="form-label">Nama</label>
                                         <input type="text" class="form-control" id="noRM" placeholder="Nama" name="nama">
@@ -64,6 +74,7 @@
                     <table id="myTable" class="display">
                         <thead>
                             <tr>
+                                <th>Jenis Pemeriksaan</th>
                                 <th>Nama</th>
                                 <th colspan="2">Action</th>
                             </tr>
@@ -71,6 +82,7 @@
                         <tbody>
                             <?php foreach ($data as $key) { ?>
                                 <tr>
+                                <td><?= $key->jenis_pemeriksaan ?></td>
                                 <td><?= $key->nama ?></td>
                                 <td>
 
@@ -97,7 +109,7 @@
                                             </div>
                                             <div class="modal-body">
                                                 <!-- Formulir -->
-                                                <form action="<?= base_url() ?>admin/parameter/delete/<?= $key->id ?>" method="get">
+                                                <form action="<?= base_url() ?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/delete/<?= $key->id ?>" method="get">
                                                     Apakah Anda Yakin ingin menghapus Data?
                                             </div>
                                             <div class="modal-footer">
@@ -117,7 +129,7 @@
                                             </div>
                                             <div class="modal-body">
                                                 <!-- Formulir -->
-                                                <form action="<?= base_url() ?>admin/parameter/editProccess/<?=$key->id?>" method="post">
+                                                <form action="<?= base_url() ?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/editProccess/<?=$key->id?>" method="post">
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12">
                                                             <div class="mb-3">

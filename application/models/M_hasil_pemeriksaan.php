@@ -22,6 +22,8 @@ class M_hasil_pemeriksaan extends CI_Model {
 			'kode_registrasi'	=> @$data['kode_registrasi'],
 			'parameter'			=> @$data['parameter'],
 			'hasil'				=> @$data['hasil'] ?? 0.0,
+			'tgl_pengujian'		=> @$data['tgl_pengujian'] ?? null,
+			'tgl_selesai'		=> @$data['tgl_selesai'] ?? null
 		);
 
 		$response = $this->db->insert('tbl_hasil_pemeriksaan', $arr);
@@ -36,10 +38,14 @@ class M_hasil_pemeriksaan extends CI_Model {
 	}
 
 
-	public function delete($id){
-        $arr = array(
-            'hasil_id' => $id
-        );
+	public function delete($id, $where = ''){
+		if ($where == ''){
+			$arr = array(
+				'hasil_id' => $id
+			);
+		}else{
+			$arr = $where;
+		}
 
 		return $this->db->delete('tbl_hasil_pemeriksaan', $arr);
 	}

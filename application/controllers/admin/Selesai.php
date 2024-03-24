@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Aktif extends AUTH_Controller {
+class Selesai extends AUTH_Controller {
 	function __construct()
 	{
 		parent::__construct();
@@ -12,13 +12,13 @@ class Aktif extends AUTH_Controller {
 	public function index()
 	{
         $data = [
-            'title' => "Aktif",
-            'data'  => $this->M_pemeriksaan->select('', ['status !=', 'SELESAI'])->result()
+            'title' => "Selesai",
+            'data'  => $this->M_pemeriksaan->select('', ['status !=' => 'AKTIF'])->result()
         ];
         $this->load->view('admin/partials/header', $data);
         $this->load->view('admin/partials/sidenav', $data);
         $this->load->view('admin/partials/navbar', $data);
-        $this->load->view('admin/aktif', $data);
+        $this->load->view('admin/selesai', $data);
         $this->load->view('admin/partials/footer', $data);
 	}
 
@@ -56,4 +56,25 @@ class Aktif extends AUTH_Controller {
 		redirect($this->uri->segment(1)."/".$this->uri->segment(2));
 	}
 	
+    public function verifnow($id)
+    {
+        $arr = array(
+            'status'    => 'VERIF',
+            'id'        => $id
+        );
+
+        $cekData = $this->M_pemeriksaan->select('', ['tbl_pemeriksaan.id' => $id]);
+        if ($cekData->num_rows() > 0){
+            $result = $this->M_pemeriksaan->update($arr);
+
+            if ($result){
+                $this->session->set_flashdata('msg', swal("succ", "Data berhasil diverifikasi."));
+            }else{
+                $this->session->set_flashdata('msg', swal("err", "Data gagal diverifikasi."));
+            }
+        }else{
+            $this->session->set_flashdata('msg', swal("err", "Data gagal diverifikasi."));
+        }
+		redirect($this->uri->segment(1)."/".$this->uri->segment(2));
+    }
 }

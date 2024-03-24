@@ -3,16 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_pemeriksaan extends CI_Model {
 
-	public function select($id = '', $email = '', $role = ''){
-		if ($id != ''){
-			$this->db->where('id_user', $id);
+	public function select($select = '', $where = ''){
+		if ($select != ''){
+			$this->db->select($select);
 		}
-		if ($email != ''){
-			$this->db->where('email', $email);
+		if ($where != ''){
+			$this->db->where($where);
 		}
-		if ($role != ''){
-			$this->db->where('role', $role);
-		}
+		
 					$this->db->select('tbl_pemeriksaan.*, tbl_customers.nama, tbl_status.*');
 					$this->db->join('tbl_customers', 'tbl_customers.no_rekam_medis = tbl_pemeriksaan.no_rekam_medis', 'left');
 					$this->db->join('tbl_status', 'tbl_status.code = tbl_pemeriksaan.status');
@@ -43,7 +41,7 @@ class M_pemeriksaan extends CI_Model {
 	public function update($data){
 		date_default_timezone_set('asia/jakarta');
 
-		$response = $this->db->update('tbl_pemeriksaan', $data, ['id_user' => $data['id_user']]);
+		$response = $this->db->update('tbl_pemeriksaan', $data, ['id' => $data['id']]);
 		return $response;
 	}
 

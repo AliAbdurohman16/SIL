@@ -53,6 +53,31 @@
                                         <button class="btn <?=($key->isCito)?"btn-success":"btn-success"?>" data-bs-toggle="modal" data-bs-target="#hasilModal<?=$key->id?>">
                                             <i class="fa fa-edit"></i> HASIL
                                         </button>
+                                        <?php if ($key->status == "AKTIF") { ?>
+                                        <button class="btn <?=($key->isCito)?"btn-info":"btn-info"?>" data-bs-toggle="modal" data-bs-target="#verifModal<?=$key->id?>">
+                                            <i class="fa fa-check"></i> VERIFIKASI
+                                        </button>
+                                        <?php } ?>
+                                        <div class="modal fade " id="verifModal<?=$key->id?>" tabindex="-1" aria-labelledby="delete" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="largeModalLabel">Verifikasi</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <!-- Formulir -->
+                                                        <form action="<?= base_url() ?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/verifnow/<?= $key->id ?>" method="post">
+                                                            Apakah Anda Yakin ingin memverifikasi Data?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                                        <button type="submit" class="btn btn-info">Simpan</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="modal fade bd-example-modal-lg" id="hasilModal<?=$key->id?>" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
@@ -84,9 +109,9 @@
                                                                             <?php foreach ($this->M_hasil_pemeriksaan->select('', ['kode_registrasi' => $key->kode_registrasi])->result() as $value) { ?>
                                                                                 <tr>
                                                                                     <td><input type="text" class="form-control" name="parameter[]" value="<?=$value->parameter ?? null?>" readonly></td>
-                                                                                    <td><input type="text" class="form-control" name="hasil[]" value="<?=$value->hasil ?? 0?>"></td>
-                                                                                    <td><input type="date" class="form-control" name="tgl_pengujian[]" value="<?=($value->tgl_pengujian != "") ? date_format(date_create($value->tgl_pengujian), "Y-m-d") : null?>"></td>
-                                                                                    <td><input type="date" class="form-control" name="tgl_selesai[]" value="<?=($value->tgl_selesai != "") ? date_format(date_create($value->tgl_selesai), "Y-m-d") : null?>"></td>
+                                                                                    <td><input type="text" class="form-control" name="hasil[]" value="<?=$value->hasil ?? 0?>" <?=($key->status == "VALID")?' readonly':''?>></td>
+                                                                                    <td><input type="date" class="form-control" name="tgl_pengujian[]" value="<?=($value->tgl_pengujian != "") ? date_format(date_create($value->tgl_pengujian), "Y-m-d") : null?>" <?=($key->status == "VALID")?' readonly':''?>></td>
+                                                                                    <td><input type="date" class="form-control" name="tgl_selesai[]" value="<?=($value->tgl_selesai != "") ? date_format(date_create($value->tgl_selesai), "Y-m-d") : null?>" <?=($key->status == "VALID")?' readonly':''?>></td>
                                                                                 </tr>
                                                                             <?php } ?>
                                                                         </table>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 23, 2024 at 08:17 PM
+-- Generation Time: Mar 24, 2024 at 07:17 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.32
 
@@ -69,7 +69,7 @@ CREATE TABLE `tbl_hasil_pemeriksaan` (
 --
 
 INSERT INTO `tbl_hasil_pemeriksaan` (`hasil_id`, `kode_registrasi`, `parameter`, `hasil`, `tgl_pengujian`, `tgl_selesai`) VALUES
-(1, '0001/REG/SIL/03/2024', 'Kolesterol', 0, '2024-03-24 02:08:24', '2024-03-25 02:08:24');
+(8, '0001/REG/SIL/03/2024', 'Kolesterol', 90, '2024-03-11 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -132,7 +132,7 @@ CREATE TABLE `tbl_pemeriksaan` (
 --
 
 INSERT INTO `tbl_pemeriksaan` (`id`, `no_rekam_medis`, `kode_registrasi`, `jenis_pemeriksaan`, `catatan`, `isCito`, `status`, `tanggal`) VALUES
-(3, '0001/SIL/RM/03/2024', '0001/REG/SIL/03/2024', 'Hitung Darah Lengkap', '', 0, 'AKTIF', '2024-03-23 10:00:00');
+(3, '0001/SIL/RM/03/2024', '0001/REG/SIL/03/2024', 'Hitung Darah Lengkap', '', 1, 'VALID', '2024-03-23 10:00:00');
 
 -- --------------------------------------------------------
 
@@ -152,10 +152,10 @@ CREATE TABLE `tbl_status` (
 --
 
 INSERT INTO `tbl_status` (`status_id`, `code`, `seq`, `status_nama`) VALUES
-(1, 'AKTIF', 2, 'Sedang dalam antrian'),
-(2, 'CITO', 1, 'Antrian didahulukan'),
-(3, 'SELESAI', 3, 'Pemeriksaan sudah selesai'),
-(4, 'BATAL', 4, 'Pemeriksaan dibatalkan');
+(1, 'AKTIF', 1, 'Sedang dalam antrian'),
+(2, 'VERIF', 2, 'Belum divalidasi'),
+(3, 'SELESAI', 4, 'Pemeriksaan sudah selesai'),
+(4, 'VALID', 3, 'Sudah tervalidasi');
 
 -- --------------------------------------------------------
 
@@ -253,7 +253,7 @@ ALTER TABLE `tbl_customers`
 -- AUTO_INCREMENT for table `tbl_hasil_pemeriksaan`
 --
 ALTER TABLE `tbl_hasil_pemeriksaan`
-  MODIFY `hasil_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `hasil_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tbl_jenis_pemeriksaan`
@@ -265,7 +265,7 @@ ALTER TABLE `tbl_jenis_pemeriksaan`
 -- AUTO_INCREMENT for table `tbl_parameter`
 --
 ALTER TABLE `tbl_parameter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_pemeriksaan`

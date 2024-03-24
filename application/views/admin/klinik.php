@@ -37,7 +37,7 @@
                     </div>
                     <div class="modal-body">
                         <!-- Formulir -->
-                        <form action="<?= base_url() ?>admin/klinik/prosesadd" method="post">
+                        <form action="<?= base_url() ?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/prosesadd" method="post">
                             <div class="row">
                                 <div class="col-lg-6 col-md-12 col-sm-12">
                                     <div class="mb-3">
@@ -149,7 +149,7 @@
                                     <td><?= $key->tanggal ?></td>
                                     <td>
 
-                                        <a href="<?= base_url() ?>admin/klinik/delete/<?= $key->id ?>">
+                                        <a href="<?= base_url() ?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/delete/<?= $key->id ?>">
                                             <button class="btn <?=($key->isCito)?"btn-white":"btn-danger"?>">
                                                 <i class="fa fa-trash"></i> delete
                                             </button>

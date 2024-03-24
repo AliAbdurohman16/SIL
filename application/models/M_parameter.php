@@ -10,7 +10,8 @@ class M_parameter extends CI_Model {
 		if ($where != ''){
 			$this->db->where($where);
 		}
-		
+					$this->db->select('tbl_parameter.*');
+					$this->db->join('tbl_jenis_pemeriksaan', 'tbl_jenis_pemeriksaan.nama = tbl_parameter.jenis_pemeriksaan');
 					$this->db->from('tbl_parameter');
 		$response = $this->db->get();
 		return $response;
@@ -20,6 +21,7 @@ class M_parameter extends CI_Model {
 		date_default_timezone_set('asia/jakarta');
 		$arr = array(
 			'nama'			=> @$data['nama'],
+			'jenis_pemeriksaan'			=> @$data['jenis_pemeriksaan'],
 		);
 
 		$response = $this->db->insert('tbl_parameter', $arr);
