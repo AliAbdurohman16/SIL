@@ -27,7 +27,6 @@ class M_pemeriksaan extends CI_Model {
 			'no_rekam_medis'		=> @$data['no_rekam_medis'],
 			'kode_registrasi'		=> @$data['kode_registrasi'],
 			'jenis_pemeriksaan'		=> $data['jenis_pemeriksaan'],
-			'parameter'				=> @$data['parameter'],
 			'catatan'				=> @$data['catatan'],
 			'isCito'				=> @$data['isCito'],
 			'status'				=> @$data['status'] ?? 'AKTIF',
