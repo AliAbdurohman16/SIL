@@ -10,7 +10,7 @@ class M_jenis_pemeriksaan extends CI_Model {
 		if ($where != ''){
 			$this->db->where($where);
 		}
-		
+
 					$this->db->from('tbl_jenis_pemeriksaan');
 		$response = $this->db->get();
 		return $response;
@@ -19,6 +19,7 @@ class M_jenis_pemeriksaan extends CI_Model {
 	public function insert($data){
 		date_default_timezone_set('asia/jakarta');
 		$arr = array(
+			'kode'			=> @$data['kode'],
 			'nama'			=> @$data['nama'],
 		);
 

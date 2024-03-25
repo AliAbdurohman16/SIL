@@ -46,13 +46,25 @@
                                         <label for="jenisPem" class="form-label">Jenis Pemeriksaan</label>
                                         <select name="jenis_pemeriksaan" class="form-control" id="jenisPem" required>
                                             <?php foreach ($this->M_jenis_pemeriksaan->select()->result() as $key) { ?>
-                                            <option value="<?=$key->nama?>"><?=$key->nama?></option>
+                                            <option value="<?=$key->nama?>"><?=$key->kode?> - <?=$key->nama?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
                                     <div class="mb-3">
+                                        <label for="kode" class="form-label">Kode</label>
+                                        <input type="text" class="form-control" id="kode" placeholder="Kode" name="kode">
+                                    </div>
+                                    <div class="mb-3">
                                         <label for="noRM" class="form-label">Nama</label>
                                         <input type="text" class="form-control" id="noRM" placeholder="Nama" name="nama">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="satuan" class="form-label">Satuan</label>
+                                        <input type="text" class="form-control" id="satuan" placeholder="Satuan" name="satuan">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="nominal" class="form-label">Nominal</label>
+                                        <input type="text" class="form-control" id="nominal" placeholder="Nominal" name="nominal">
                                     </div>
                                 </div>
 
@@ -75,7 +87,10 @@
                         <thead>
                             <tr>
                                 <th>Jenis Pemeriksaan</th>
+                                <th>Kode</th>
                                 <th>Nama</th>
+                                <th>Satuan</th>
+                                <th>Nominal</th>
                                 <th colspan="2">Action</th>
                             </tr>
                         </thead>
@@ -83,7 +98,10 @@
                             <?php foreach ($data as $key) { ?>
                                 <tr>
                                 <td><?= $key->jenis_pemeriksaan ?></td>
+                                <td><?= $key->kode ?></td>
                                 <td><?= $key->nama ?></td>
+                                <td><?= $key->satuan ?></td>
+                                <td><?= number_format($key->nominal, 0, ',', '.') ?></td>
                                 <td>
 
                                     <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#editModal<?=$key->id?>">
@@ -133,8 +151,20 @@
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12">
                                                             <div class="mb-3">
+                                                                <label for="kode" class="form-label">Kode</label>
+                                                                <input type="text" class="form-control" id="kode" placeholder="Kode" name="kode" value="<?=$key->kode?>">
+                                                            </div>
+                                                            <div class="mb-3">
                                                                 <label for="nama" class="form-label">Nama</label>
                                                                 <input type="text" class="form-control" id="nama" placeholder="Nama" name="nama" value="<?=$key->nama?>">
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="satuan" class="form-label">Satuan</label>
+                                                                <input type="text" class="form-control" id="satuan" placeholder="satuan" name="Satuan" value="<?=$key->satuan?>">
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="nominal" class="form-label">Nominal</label>
+                                                                <input type="text" class="form-control" id="nominal" placeholder="Nominal" name="nominal" value="<?=$key->nominal?>">
                                                             </div>
                                                         </div>
 

@@ -41,6 +41,10 @@
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <div class="mb-3">
+                                        <label for="kode" class="form-label">Kode</label>
+                                        <input type="text" class="form-control" id="kode" placeholder="Kode" name="kode">
+                                    </div>
+                                    <div class="mb-3">
                                         <label for="noRM" class="form-label">Nama</label>
                                         <input type="text" class="form-control" id="noRM" placeholder="Nama" name="nama">
                                     </div>
@@ -64,13 +68,15 @@
                     <table id="myTable" class="display">
                         <thead>
                             <tr>
+                                <th>Kode</th>
                                 <th>Nama</th>
                                 <th colspan="2">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($data as $key) { ?>
-                                <tr>
+                            <tr>
+                                <td><?= $key->kode ?></td>
                                 <td><?= $key->nama ?></td>
                                 <td>
 
@@ -120,6 +126,10 @@
                                                 <form action="<?= base_url() ?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/editProccess/<?=$key->id?>" method="post">
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12">
+                                                            <div class="mb-3">
+                                                                <label for="kode" class="form-label">Kode</label>
+                                                                <input type="text" class="form-control" id="kode" placeholder="Kode" name="kode" value="<?=$key->kode?>">
+                                                            </div>
                                                             <div class="mb-3">
                                                                 <label for="nama" class="form-label">Nama</label>
                                                                 <input type="text" class="form-control" id="nama" placeholder="Nama" name="nama" value="<?=$key->nama?>">

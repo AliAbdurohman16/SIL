@@ -45,7 +45,7 @@ class Klinik extends AUTH_Controller {
         redirect($this->uri->segment(1)."/".$this->uri->segment(2));
     }
 
-    
+
 
     public function delete($id){
         $result = $this->M_pemeriksaan->delete($id);
@@ -57,5 +57,25 @@ class Klinik extends AUTH_Controller {
 		}
 
         redirect($this->uri->segment(1)."/".$this->uri->segment(2));
+    }
+
+    public function cekRM()
+    {
+        $data = $this->input->get();
+
+        $cekData = $this->M_customers->select('', ['no_rekam_medis' => $data['noRM']]);
+        if ($cekData->num_rows() > 0){
+            $dataReturn = array(
+                'status' => true,
+                'data'   => $cekData->row()
+            );
+        }else{
+            $dataReturn = array(
+                'status' => false,
+                'data'   => null
+            );
+        }
+
+        echo json_encode($dataReturn);
     }
 }

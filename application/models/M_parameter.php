@@ -20,8 +20,11 @@ class M_parameter extends CI_Model {
 	public function insert($data){
 		date_default_timezone_set('asia/jakarta');
 		$arr = array(
-			'nama'			=> @$data['nama'],
-			'jenis_pemeriksaan'			=> @$data['jenis_pemeriksaan'],
+			'kode'					=> @$data['kode'],
+			'nama'					=> @$data['nama'],
+			'satuan'				=> @$data['satuan'],
+			'nominal'				=> @$data['nominal'],
+			'jenis_pemeriksaan'		=> @$data['jenis_pemeriksaan'],
 		);
 
 		$response = $this->db->insert('tbl_parameter', $arr);

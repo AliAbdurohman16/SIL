@@ -42,7 +42,7 @@
                                 <div class="col-lg-6 col-md-12 col-sm-12">
                                     <div class="mb-3">
                                         <label for="noRM" class="form-label">No RM</label>
-                                        <input type="text" class="form-control" id="noRM" name="no_rekam_medis" placeholder="Masukan No RM">
+                                        <input type="text" class="form-control" id="noRM" onchange="cekRM()" name="no_rekam_medis" placeholder="Masukan No RM">
                                     </div>
                                     <div class="mb-3">
                                         <label for="kodeReg" class="form-label">Kode Registrasi</label>
@@ -98,19 +98,19 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="tempatLahir" class="form-label">Tempat Lahir</label>
-                                        <input type="text" class="form-control" id="tempatLahir" name="tempat_lahir" placeholder="Masukan Tempat Lahir">
+                                        <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Masukan Tempat Lahir">
                                     </div>
                                     <div class="mb-3">
                                         <label for="tanggalLahir" class="form-label">Tanggal Lahir</label>
-                                        <input type="date" class="form-control" id="tanggalLahir" name="tanggal_lahir" placeholder="Masukan tanggal Lahir">
+                                        <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" placeholder="Masukan tanggal Lahir">
                                     </div>
                                     <div class="mb-3">
                                         <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
-                                        <input type="text" class="form-control" id="jenisKelamin" name="jenis_kelamin" placeholder="Masukan Jenis Kelamin">
+                                        <input type="text" class="form-control" id="jenis_kelamin" name="jenis_kelamin" placeholder="Masukan Jenis Kelamin">
                                     </div>
                                     <div class="mb-3">
                                         <label for="noHP" class="form-label">No Hp</label>
-                                        <input type="Number" class="form-control" id="noHP" name="no_hp" placeholder="Masukan No Hp">
+                                        <input type="Number" class="form-control" id="no_hp" name="no_hp" placeholder="Masukan No Hp">
                                     </div>
                                 </div>
                             </div>
@@ -133,7 +133,6 @@
                                 <th>Nama</th>
                                 <!-- <th>Pemeriksaan</th> -->
                                 <!-- <th>Jenis Sample</th> -->
-                                <th>Jenis Pemeriksaan</th>
                                 <th>Status</th>
                                 <th>Tanggal</th>
                                 <th>Action</th>
@@ -144,11 +143,9 @@
                                 <tr class="<?=($key->isCito)?"bg bg-danger text-white":""?>">
                                     <td><?= $key->kode_registrasi ?></td>
                                     <td><?= $key->nama ?></td>
-                                    <td><?= $key->jenis_pemeriksaan ?></td>
                                     <td><?= $key->status_nama ?></td>
                                     <td><?= $key->tanggal ?></td>
                                     <td>
-
                                         <a href="<?= base_url() ?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/delete/<?= $key->id ?>">
                                             <button class="btn <?=($key->isCito)?"btn-white":"btn-danger"?>">
                                                 <i class="fa fa-trash"></i> delete
@@ -173,4 +170,22 @@
             "ordering": false,
         });
     });
+
+    function cekRM()
+    {
+        let noRM = $('#noRM').val();
+        $.get('<?=base_url()?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/cekRM', 'noRM='+noRM, function(data) {
+            data = JSON.parse(data);
+            if (data.status == true){
+                $('#nik').val(data.data.nik);
+                $('#nama').val(data.data.nama);
+                $('#email').val(data.data.email);
+                $('#alamat').val(data.data.alamat);
+                $('#tempat_lahir').val(data.data.tempat_lahir);
+                $('#tanggal_lahir').val(data.data.tanggal_lahir);
+                $('#jenis_kelamin').val(data.data.jenis_kelamin);
+                $('#no_hp').val(data.data.no_hp);
+            }
+        })
+    }
 </script>
