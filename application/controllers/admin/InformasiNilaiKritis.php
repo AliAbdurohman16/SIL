@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Informasi extends AUTH_Controller {
+class InformasiNilaiKritis extends AUTH_Controller {
 	function __construct()
 	{
 		parent::__construct();
@@ -16,7 +16,7 @@ class Informasi extends AUTH_Controller {
         $this->load->view('admin/partials/header', $data);
         $this->load->view('admin/partials/sidenav', $data);
         $this->load->view('admin/partials/navbar', $data);
-        $this->load->view('admin/informasi', $data);
+        $this->load->view('admin/informasi_nilai_kritis', $data);
         $this->load->view('admin/partials/footer', $data);
 	}
 }
