@@ -144,7 +144,7 @@
                                     <td><?= $key->kode_registrasi ?></td>
                                     <td><?= $key->nama ?></td>
                                     <td><?= $key->status_nama ?></td>
-                                    <td><?= $key->tanggal ?></td>
+                                    <td><?= date('d-m-Y H:i:s', strtotime($key->tanggal)) ?></td>
                                     <td>
                                         <a href="<?= base_url() ?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/delete/<?= $key->id ?>">
                                             <button class="btn <?=($key->isCito)?"btn-white":"btn-danger"?>">
