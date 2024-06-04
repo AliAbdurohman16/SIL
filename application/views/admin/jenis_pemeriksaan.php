@@ -18,7 +18,7 @@
                         </div>
                         <div class="col-4 col-md-4 col-sm-6 text-end">
                             <button type="button" class="btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#largeModal">
-                                Tambah Admin
+                                Tambah Data
                             </button>
                         </div>
                     </div>
@@ -107,8 +107,8 @@
                                                     Apakah Anda Yakin ingin menghapus Data?
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                                                <button type="submit" class="btn btn-info">Simpan</button>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+                                                <button type="submit" class="btn btn-info">Ya, Hapus</button>
                                                 </form>
                                             </div>
                                         </div>

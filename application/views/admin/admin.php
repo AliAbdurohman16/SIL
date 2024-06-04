@@ -127,8 +127,8 @@
                                                     Apakah Anda Yakin ingin menghapus Data?
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                                                <button type="submit" class="btn btn-info">Simpan</button>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+                                                <button type="submit" class="btn btn-info">Ya, Hapus</button>
                                                 </form>
                                             </div>
                                         </div>

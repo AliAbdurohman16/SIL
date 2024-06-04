@@ -42,9 +42,9 @@
                                 </div>
                                 <div class="card-body">
                                     <form action="<?= base_url() ?>Auth/secure" method="post">
-                                        <label>Email</label>
+                                        <label>Username</label>
                                         <div class="mb-3">
-                                            <input type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon" name="username">
+                                            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="username-addon" name="username">
                                         </div>
                                         <label>Password</label>
                                         <div class="mb-3">
