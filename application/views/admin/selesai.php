@@ -99,21 +99,25 @@
                                                                         <input type="text" class="form-control" id="jenis_pemeriksaan" placeholder="jenis_pemeriksaan" required name="jenis_pemeriksaan" value="<?=$key->jenis_pemeriksaan?>" readonly>
                                                                     </div>
                                                                     <div class="mb-3">
-                                                                        <table width="100%">
-                                                                            <tr>
-                                                                                <th>Parameter</th>
-                                                                                <th>Hasil</th>
-                                                                                <th>Tgl Pengujian</th>
-                                                                                <th>Tgl Selesai</th>
-                                                                            </tr>
-                                                                            <?php foreach ($this->M_hasil_pemeriksaan->select('', ['kode_registrasi' => $key->kode_registrasi])->result() as $value) { ?>
-                                                                                <tr>
-                                                                                    <td><input type="text" class="form-control" name="parameter[]" value="<?=$value->parameter ?? null?>" readonly></td>
-                                                                                    <td><input type="text" class="form-control" name="hasil[]" value="<?=$value->hasil ?? 0?>" <?=($key->status == "VALID")?' readonly':''?>></td>
-                                                                                    <td><input type="date" class="form-control" name="tgl_pengujian[]" value="<?=($value->tgl_pengujian != "") ? date_format(date_create($value->tgl_pengujian), "Y-m-d") : null?>" <?=($key->status == "VALID")?' readonly':''?>></td>
-                                                                                    <td><input type="date" class="form-control" name="tgl_selesai[]" value="<?=($value->tgl_selesai != "") ? date_format(date_create($value->tgl_selesai), "Y-m-d") : null?>" <?=($key->status == "VALID")?' readonly':''?>></td>
+                                                                        <table class="display" width="100%">
+                                                                            <thead>
+                                                                                <tr class="text-dark">
+                                                                                    <th>Parameter</th>
+                                                                                    <th>Hasil</th>
+                                                                                    <th>Tgl Pengujian</th>
+                                                                                    <th>Tgl Selesai</th>
                                                                                 </tr>
-                                                                            <?php } ?>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <?php foreach ($this->M_hasil_pemeriksaan->select('', ['kode_registrasi' => $key->kode_registrasi])->result() as $value) { ?>
+                                                                                    <tr>
+                                                                                        <td><input type="text" class="form-control" name="parameter[]" value="<?=$value->parameter ?? null?>" readonly></td>
+                                                                                        <td><input type="text" class="form-control" name="hasil[]" value="<?=$value->hasil ?? 0?>" <?=($key->status == "VALID")?' readonly':''?>></td>
+                                                                                        <td><input type="date" class="form-control" name="tgl_pengujian[]" value="<?=($value->tgl_pengujian != "") ? date_format(date_create($value->tgl_pengujian), "Y-m-d") : null?>" <?=($key->status == "VALID")?' readonly':''?>></td>
+                                                                                        <td><input type="date" class="form-control" name="tgl_selesai[]" value="<?=($value->tgl_selesai != "") ? date_format(date_create($value->tgl_selesai), "Y-m-d") : null?>" <?=($key->status == "VALID")?' readonly':''?>></td>
+                                                                                    </tr>
+                                                                                <?php } ?>
+                                                                            </tbody>
                                                                         </table>
                                                                     </div>
                                                                 </div>
