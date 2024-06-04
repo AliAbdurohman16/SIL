@@ -48,6 +48,10 @@
                                         <label for="noRM" class="form-label">Nama</label>
                                         <input type="text" class="form-control" id="noRM" placeholder="Nama" name="nama">
                                     </div>
+                                    <div class="mb-3">
+                                        <label for="tarif" class="form-label">Tarif</label>
+                                        <input type="text" class="form-control" id="tarif" placeholder="Tarif" name="tarif">
+                                    </div>
                                 </div>
 
                             </div>
@@ -70,6 +74,7 @@
                             <tr>
                                 <th>Kode</th>
                                 <th>Nama</th>
+                                <th>Tarif</th>
                                 <th colspan="2">Action</th>
                             </tr>
                         </thead>
@@ -78,6 +83,7 @@
                             <tr>
                                 <td><?= $key->kode ?></td>
                                 <td><?= $key->nama ?></td>
+                                <td><?= number_format($key->tarif, 0, ',', '.') ?></td>
                                 <td>
 
                                     <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#editModal<?=$key->id?>">
@@ -133,6 +139,10 @@
                                                             <div class="mb-3">
                                                                 <label for="nama" class="form-label">Nama</label>
                                                                 <input type="text" class="form-control" id="nama" placeholder="Nama" name="nama" value="<?=$key->nama?>">
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="tarif" class="form-label">Tarif</label>
+                                                                <input type="text" class="form-control" id="tarif" placeholder="Tarif" name="tarif" value="<?=$key->tarif?>">
                                                             </div>
                                                         </div>
 
