@@ -23,7 +23,6 @@ class M_parameter extends CI_Model {
 			'kode'					=> @$data['kode'],
 			'nama'					=> @$data['nama'],
 			'satuan'				=> @$data['satuan'],
-			'nominal'				=> @$data['nominal'],
 			'jenis_pemeriksaan'		=> @$data['jenis_pemeriksaan'],
 		);
 

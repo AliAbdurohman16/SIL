@@ -62,10 +62,6 @@
                                         <label for="satuan" class="form-label">Satuan</label>
                                         <input type="text" class="form-control" id="satuan" placeholder="Satuan" name="satuan">
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="nominal" class="form-label">Nominal</label>
-                                        <input type="text" class="form-control" id="nominal" placeholder="Nominal" name="nominal">
-                                    </div>
                                 </div>
 
                             </div>
@@ -90,7 +86,6 @@
                                 <th>Kode</th>
                                 <th>Nama</th>
                                 <th>Satuan</th>
-                                <th>Nominal</th>
                                 <th colspan="2">Action</th>
                             </tr>
                         </thead>
@@ -101,7 +96,6 @@
                                 <td><?= $key->kode ?></td>
                                 <td><?= $key->nama ?></td>
                                 <td><?= $key->satuan ?></td>
-                                <td><?= number_format($key->nominal, 0, ',', '.') ?></td>
                                 <td>
 
                                     <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#editModal<?=$key->id?>">
@@ -161,10 +155,6 @@
                                                             <div class="mb-3">
                                                                 <label for="satuan" class="form-label">Satuan</label>
                                                                 <input type="text" class="form-control" id="satuan" placeholder="satuan" name="Satuan" value="<?=$key->satuan?>">
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="nominal" class="form-label">Nominal</label>
-                                                                <input type="text" class="form-control" id="nominal" placeholder="Nominal" name="nominal" value="<?=$key->nominal?>">
                                                             </div>
                                                         </div>
 
