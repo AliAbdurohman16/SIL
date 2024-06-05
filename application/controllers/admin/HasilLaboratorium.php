@@ -22,7 +22,7 @@ class HasilLaboratorium extends AUTH_Controller {
         $this->load->view('admin/partials/footer', $data);
 	}
 
-    public function delete($id){
+    public function exportPDF($id){
         $result = $this->M_hasil_pemeriksaan->delete($id);
 
 		if ($result){

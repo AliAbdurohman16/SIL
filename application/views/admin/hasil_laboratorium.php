@@ -48,13 +48,17 @@
                                     <td><?= date('d-m-Y H:i:s', strtotime($key->tgl_pengujian) ) ?></td>
                                     <td><?= date('d-m-Y H:i:s', strtotime($key->tgl_selesai) ) ?></td>
                                     <td>
-                                        <a href="<?= base_url() ?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/delete/<?= $key->hasil_id ?>">
+                                        <a href="<?= base_url() ?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/exportPDF/<?= $key->hasil_id ?>">
                                             <button class="btn btn-danger">
-                                                <i class="fa fa-trash"></i> delete
+                                                <i class="fa fa-file-pdf"></i> Export PDF
+                                            </button>
+                                        </a>
+                                        <a href="<?= base_url() ?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/exportPDF/<?= $key->hasil_id ?>">
+                                            <button class="btn btn-info">
+                                                <i class="fa fa-envelope"></i> Kirim Email
                                             </button>
                                         </a>
                                     </td>
-
                                 </tr>
                             <?php } ?>
                         </tbody>
