@@ -13,7 +13,7 @@ class HasilLaboratorium extends AUTH_Controller {
 	{
         $data = [
             'title' => "Informasi Nilai Kritis",
-            'data'  => $this->M_hasil_pemeriksaan->select()->result()
+            'data'  => $this->M_hasil_pemeriksaan->selectJoin()->result()
         ];
         $this->load->view('admin/partials/header', $data);
         $this->load->view('admin/partials/sidenav', $data);
@@ -22,15 +22,17 @@ class HasilLaboratorium extends AUTH_Controller {
         $this->load->view('admin/partials/footer', $data);
 	}
 
-    public function exportPDF($id){
-        $result = $this->M_hasil_pemeriksaan->delete($id);
+    public function exportPDF($id = ''){
+        $data['id'] = $id;
+        $data['data'] = $this->M_hasil_pemeriksaan->selectJoin('', ['hasil_id' => $data['id']])->row();
+        $data['hasil'] = $this->M_hasil_pemeriksaan->selectJoin('', ['tbl_hasil_pemeriksaan.kode_registrasi' => $data['data']->kode_registrasi])->result();
+        
+        // Menghitung umur
+        $birthdate = new DateTime($data['data']->tanggal_lahir);
+        $today = new DateTime('today');
+        $umur = $birthdate->diff($today)->y . ' tahun ' . $birthdate->diff($today)->m . ' bulan ' . $birthdate->diff($today)->d . ' hari';
+        $data['umur'] = $umur;
 
-		if ($result){
-			$this->session->set_flashdata('msg', swal("succ", "Data berhasil dihapus"));
-		}else{
-			$this->session->set_flashdata('msg', swal("err", "Data gagal dihapus"));
-		}
-
-        redirect($this->uri->segment(1)."/".$this->uri->segment(2));
+        $this->load->view('admin/pdf/index', $data);
     }
 }

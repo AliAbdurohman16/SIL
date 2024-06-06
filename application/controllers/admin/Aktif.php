@@ -13,7 +13,7 @@ class Aktif extends AUTH_Controller {
 	{
         $data = [
             'title' => "Aktif",
-            'data'  => $this->M_pemeriksaan->select('', ['status !=', 'SELESAI'])->result()
+            'data'  => $this->M_pemeriksaan->select('', ['status' => 'AKTIF'])->result()
         ];
         $this->load->view('admin/partials/header', $data);
         $this->load->view('admin/partials/sidenav', $data);
