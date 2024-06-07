@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jun 07, 2024 at 09:37 PM
+-- Generation Time: Jun 07, 2024 at 11:02 PM
 -- Server version: 5.7.39
 -- PHP Version: 7.4.33
 
@@ -51,7 +51,7 @@ INSERT INTO `tbl_customers` (`id`, `no_rekam_medis`, `nik`, `nama`, `email`, `al
 (15, '32372979', '2323', 'asas', 'sasa@gmail.com', 'sdds', 'sdsd', '2001-03-01', 'Perempuan', '0876267367'),
 (16, '2323', '323', 'dwdsd', 'sdsds@gmail.com', 'dssd', 'dsdsd', '2012-01-31', 'Laki-laki', '23232323'),
 (18, '232323', '778394934', 'sasa', 'asasa@gmail.com', 'saasa', 'asas', '2001-05-06', 'Perempuan', '086863273'),
-(19, '9239372', '686673523', 'Mohammad Teguh Adriansyah', 'aasas@gmail.com', 'asasas', 'sasa', '2004-02-03', 'Perempuan', '0866657253');
+(19, '9239372', '686673523', 'Mohammad Teguh Adriansyah', 'aasas@gmail.com', 'asasas', 'sasa', '2004-02-03', 'Laki-laki', '0866657253');
 
 -- --------------------------------------------------------
 
@@ -74,7 +74,7 @@ CREATE TABLE `tbl_hasil_pemeriksaan` (
 --
 
 INSERT INTO `tbl_hasil_pemeriksaan` (`hasil_id`, `kode_registrasi`, `parameter`, `hasil`, `tgl_pengujian`, `tgl_selesai`, `dokter`) VALUES
-(22, '0001/REG/SIL/06/2024', 'Kolesterol', 40, '2024-06-07 00:00:00', '2024-06-07 00:00:00', 'dr. Nelly Ratnasari');
+(23, '0001/REG/SIL/06/2024', 'Kolesterol', 40, '2024-06-07 00:00:00', '2024-06-07 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -94,9 +94,26 @@ CREATE TABLE `tbl_jenis_pemeriksaan` (
 --
 
 INSERT INTO `tbl_jenis_pemeriksaan` (`id`, `kode`, `nama`, `tarif`) VALUES
-(1, '1.1.3', 'Hitung Darah Lengkap', '2000'),
-(2, '1.1.1', 'Prothrombin Tim', '1000'),
-(3, '1.1.2', 'Tes Darah Panel Metabolik Dasar ', '3000');
+(1, '1.5.3', 'Glukosa Sewaktu', '40000'),
+(2, '1.5.1', 'Glukosa Puasa', '40000'),
+(3, '1.5.2', 'Glukosa 2 Jam PP', '40000'),
+(4, '1.5.4', 'Ureum', '65000'),
+(5, '1.5.5', 'Creatinin', '65000'),
+(6, '1.5.6', 'Asam Urat', '47500'),
+(7, '1.5.7', 'SGOT', '55000'),
+(8, '1.5.8', 'SGPT', '55000'),
+(9, '1.5.9', 'Bilirubin Total', '65000'),
+(10, '1.5.10', 'Bilirubin Direct', '65000'),
+(11, '1.5.11', 'Bilirubin Indirect', '50000'),
+(12, '1.5.12', 'Protein Total', '50000'),
+(13, '1.5.13', 'Albumin', '50000'),
+(14, '1.5.14', 'Globulin', '35000'),
+(15, '1.5.15', 'Alkali Phospatase', '60000'),
+(16, '1.5.16', 'Cholesterol', '55000'),
+(17, '1.5.17', 'HDL Cholesterol', '70000'),
+(18, '1.5.18', 'LDL Cholesterol', '75000'),
+(19, '1.5.19', 'Trigliserida', '55000'),
+(20, '1.5.20', 'Gamma GT', '65000');
 
 -- --------------------------------------------------------
 
@@ -117,7 +134,7 @@ CREATE TABLE `tbl_parameter` (
 --
 
 INSERT INTO `tbl_parameter` (`id`, `kode`, `jenis_pemeriksaan`, `nama`, `satuan`) VALUES
-(1, '2121', 'Hitung Darah Lengkap', 'Kolesterol', 'g/dL');
+(1, '2121', 'Glukosa Sewaktu', 'Kolesterol', 'g/dL');
 
 -- --------------------------------------------------------
 
@@ -140,8 +157,8 @@ CREATE TABLE `tbl_pembayaran` (
 --
 
 INSERT INTO `tbl_pembayaran` (`invoice`, `kode_registrasi`, `nama`, `jenis_pemeriksaan`, `tanggal`, `status`, `total`) VALUES
-('INV6753', '0001/REG/SIL/06/2024', 'Mohammad Irwansyah Somantri', 'Hitung Darah Lengkap', '2024-06-07 14:50:26', 'Sudah Bayar', '3000'),
-('INV8229', '0001/REG/SIL/06/2024', 'Mohammad Teguh Adriansyah', 'Hitung Darah Lengkap', '2024-06-07 09:20:26', 'Sudah Bayar', '2000');
+('INV6753', '0001/REG/SIL/06/2024', 'Mohammad Irwansyah Somantri', 'Glukosa Puasa', '2024-06-07 14:50:26', 'Sudah Bayar', '40000'),
+('INV8229', '0001/REG/SIL/06/2024', 'Mohammad Teguh Adriansyah', 'Glukosa Puasa', '2024-06-07 09:20:26', 'Sudah Bayar', '40000');
 
 -- --------------------------------------------------------
 
@@ -165,7 +182,7 @@ CREATE TABLE `tbl_pemeriksaan` (
 --
 
 INSERT INTO `tbl_pemeriksaan` (`id`, `no_rekam_medis`, `kode_registrasi`, `jenis_pemeriksaan`, `catatan`, `isCito`, `status`, `tanggal`) VALUES
-(13, '9239372', '0001/REG/SIL/06/2024', 'Hitung Darah Lengkap', 'sasas', 1, 'VALID', '2024-06-07 09:20:26');
+(13, '9239372', '0001/REG/SIL/06/2024', 'Glukosa Puasa', 'sasas', 1, 'SELESAI', '2024-06-07 09:20:26');
 
 -- --------------------------------------------------------
 
@@ -299,13 +316,13 @@ ALTER TABLE `tbl_customers`
 -- AUTO_INCREMENT for table `tbl_hasil_pemeriksaan`
 --
 ALTER TABLE `tbl_hasil_pemeriksaan`
-  MODIFY `hasil_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `hasil_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `tbl_jenis_pemeriksaan`
 --
 ALTER TABLE `tbl_jenis_pemeriksaan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tbl_parameter`
@@ -362,7 +379,8 @@ ALTER TABLE `tbl_pembayaran`
 --
 ALTER TABLE `tbl_pemeriksaan`
   ADD CONSTRAINT `tbl_pemeriksaan_ibfk_1` FOREIGN KEY (`status`) REFERENCES `tbl_status` (`code`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tbl_pemeriksaan_ibfk_2` FOREIGN KEY (`no_rekam_medis`) REFERENCES `tbl_customers` (`no_rekam_medis`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tbl_pemeriksaan_ibfk_2` FOREIGN KEY (`no_rekam_medis`) REFERENCES `tbl_customers` (`no_rekam_medis`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_pemeriksaan_ibfk_3` FOREIGN KEY (`jenis_pemeriksaan`) REFERENCES `tbl_jenis_pemeriksaan` (`nama`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
