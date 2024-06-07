@@ -55,6 +55,16 @@ class M_Pembayaran extends CI_Model {
         return $response;
     }
     
+	public function getMonthlyIncome() {
+        $currentMonth = date('m');
+        $currentYear = date('Y');
+        
+        $this->db->select('SUM(total) as total_pendapatan');
+        $this->db->where('MONTH(tanggal)', $currentMonth);
+        $this->db->where('YEAR(tanggal)', $currentYear);
+        $query = $this->db->get('tbl_pembayaran');
+        return $query->row()->total_pendapatan;
+    }
 }
 
 /* End of file M_admin.php */

@@ -32,7 +32,7 @@
                             <div class="numbers">
                                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Pendapatan Bulan ini</p>
                                 <h5 class="font-weight-bolder mb-0">
-                                    Rp. 1.452.300
+                                    Rp <?= number_format($pendapatan, 0, ',', '.') ?>
                                 </h5>
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                             <div class="numbers">
                                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Pasien Bulan ini</p>
                                 <h5 class="font-weight-bolder mb-0">
-                                    175
+                                <?= $pasien ?>
                                 </h5>
                             </div>
                         </div>
@@ -74,7 +74,7 @@
                             <div class="numbers">
                                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Pemeriksaan Klinik</p>
                                 <h5 class="font-weight-bolder mb-0">
-                                    10
+                                    <?= $pemeriksaan ?>
                                     <span class="text-info text-sm font-weight-bolder">Hari ini</span>
                                 </h5>
                             </div>
@@ -96,7 +96,7 @@
                             <div class="numbers">
                                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Pemeriksaan Selesai</p>
                                 <h5 class="font-weight-bolder mb-0">
-                                    8
+                                    <?= $selesai ?>
                                     <span class="text-success text-sm font-weight-bolder">Hari Ini</span>
                                 </h5>
                             </div>
@@ -145,10 +145,23 @@
     gradientStroke2.addColorStop(0.2, 'rgba(72,72,176,0.0)');
     gradientStroke2.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors
 
+    <?php
+        $monthNames = array(
+            "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+            "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+        );
+    ?>
+
     new Chart(ctx2, {
         type: "line",
         data: {
-            labels: ["jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            labels: [
+                <?php
+                foreach ($grafik as $data) {
+                    echo '"' . $monthNames[$data->bulan - 1] . '", ';
+                }
+                ?>
+            ],
             datasets: [{
                     label: "Perempuan",
                     tension: 0.4,
@@ -158,7 +171,13 @@
                     borderWidth: 3,
                     backgroundColor: gradientStroke1,
                     fill: true,
-                    data: [50, 80, 40, 30, 99, 72, 52, 82, 95, 31, 80, 70],
+                    data: [
+                        <?php
+                        foreach ($grafik as $data) {
+                            echo $data->perempuan . ', ';
+                        }
+                        ?>
+                    ],
                     maxBarThickness: 6
 
                 },
@@ -171,7 +190,13 @@
                     borderWidth: 3,
                     backgroundColor: gradientStroke2,
                     fill: true,
-                    data: [30, 95, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    data: [
+                        <?php
+                        foreach ($grafik as $data) {
+                            echo $data->laki_laki . ', ';
+                        }
+                        ?>
+                    ],
                     maxBarThickness: 6
                 },
             ],

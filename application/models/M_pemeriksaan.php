@@ -75,6 +75,51 @@ class M_pemeriksaan extends CI_Model {
 
 		return $autoGen;
 	}
+
+	public function jmlPasien() {
+		$currentMonth = date('m');
+		$currentYear = date('Y');
+		
+		$this->db->where('MONTH(tanggal)', $currentMonth);
+		$this->db->where('YEAR(tanggal)', $currentYear);
+		$this->db->from('tbl_pemeriksaan');
+		return $this->db->count_all_results();
+	}
+
+	public function jmlPemeriksaan() {
+		$date = date('Y-m-d');
+		
+		$this->db->where('DATE(tanggal)', $date);
+		$this->db->from('tbl_pemeriksaan');
+		return $this->db->count_all_results();
+	}
+
+	public function jmlPemeriksaanSelesai() {
+		$date = date('Y-m-d');
+		
+		$this->db->where('DATE(tanggal)', $date);
+		$this->db->where('status', 'SELESAI');
+		$this->db->from('tbl_pemeriksaan');
+		return $this->db->count_all_results();
+	}
+
+
+	public function jmlGrafik() {
+		$currentMonth = date('m');
+		$currentYear = date('Y');
+
+        $this->db->select('MONTH(tanggal) as bulan, 
+                           SUM(CASE WHEN tbl_customers.jenis_kelamin = "Laki-laki" THEN 1 ELSE 0 END) as laki_laki,
+                           SUM(CASE WHEN tbl_customers.jenis_kelamin = "Perempuan" THEN 1 ELSE 0 END) as perempuan');
+        $this->db->from('tbl_pemeriksaan');
+        $this->db->join('tbl_customers', 'tbl_customers.no_rekam_medis = tbl_pemeriksaan.no_rekam_medis', 'left');
+		$this->db->where('MONTH(tanggal)', $currentMonth);
+        $this->db->where('YEAR(tanggal)', $currentYear);
+        $this->db->group_by('MONTH(tanggal)');
+        $this->db->order_by('MONTH(tanggal)', 'ASC');
+        $query = $this->db->get();
+        return $query->result();
+    }
 }
 
 /* End of file M_admin.php */
