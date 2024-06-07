@@ -127,7 +127,7 @@
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>
-    <script>
+    <!-- <script>
         function generateBarcode() {
             const kodeRegistrasi = "<?= $data->no_rekam_medis ?>";
             JsBarcode("#barcode", kodeRegistrasi, {
@@ -137,7 +137,7 @@
                 height: 300
             });
         }
-    </script>
+    </script> -->
 </head>
 <body onload="generateBarcode(); window.print()">
     <table class="header-table">
@@ -157,14 +157,14 @@
             <td colspan="3"><hr></td>
         </tr>
     </table>
-    <table>
+    <!-- <table>
         <thead>
             <tr>
                 <td><svg id="barcode" class="barcode"></svg></td>
                 <td class="penanggung-jawab">Penanggung jawab: <?= $data->penanggung_jawab ?></td>
             </tr>
         </thead>
-    </table>
+    </table> -->
     <table class="patient-doctor-table">
         <thead>
             <tr>
