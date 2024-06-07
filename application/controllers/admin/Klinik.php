@@ -7,6 +7,9 @@ class Klinik extends AUTH_Controller {
 		parent::__construct();
         $this->load->model('M_pemeriksaan');
         $this->load->model('M_customers');
+        $this->load->model('M_pembayaran');
+        $this->load->model('M_jenis_pemeriksaan');
+        $this->load->model('M_hasil_pemeriksaan');
 	}
 	
 	public function index()
@@ -36,7 +39,27 @@ class Klinik extends AUTH_Controller {
 
         $result = $this->M_pemeriksaan->insert($data);
 
-		if ($result){
+        $jenis = $this->M_jenis_pemeriksaan->select('', ['nama' => $data['jenis_pemeriksaan']])->row();
+
+        $dataPembayaran = [
+            'invoice'           => 'INV' . rand(1000, 9999),
+            'kode_registrasi'   => $data['kode_registrasi'],
+            'nama'              => $data['nama'],
+            'jenis_pemeriksaan' => $data['jenis_pemeriksaan'],
+            'tanggal'           => date('Y-m-d H:i:s'),
+            'total'             => $jenis->tarif
+        ];
+
+        $this->M_pembayaran->insert($dataPembayaran);
+
+        $hasilPemeriksaan = [
+            'kode_registrasi'   => $data['kode_registrasi'],
+            'parameter'         => $data['parameter']
+        ];
+
+        $this->M_hasil_pemeriksaan->insert($hasilPemeriksaan);
+
+		if ($hasilPemeriksaan){
 			$this->session->set_flashdata('msg', swal("succ", "Data berhasil ditambahkan."));
 		}else{
 			$this->session->set_flashdata('msg', swal("err", "Data gagal ditambahkan."));

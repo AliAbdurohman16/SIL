@@ -7,6 +7,7 @@ class Validasi extends AUTH_Controller {
 		parent::__construct();
         $this->load->model('M_pemeriksaan');
         $this->load->model('M_customers');
+        $this->load->model('M_hasil_pemeriksaan');
 	}
 	
 	public function index()
@@ -80,23 +81,40 @@ class Validasi extends AUTH_Controller {
 
     public function validnow($id)
     {
-        $arr = array(
-            'status'    => 'VALID',
-            'id'        => $id
-        );
-
         $cekData = $this->M_pemeriksaan->select('', ['tbl_pemeriksaan.id' => $id]);
+        
         if ($cekData->num_rows() > 0){
-            $result = $this->M_pemeriksaan->update($arr);
+            $cek = $cekData->row();
 
-            if ($result){
-                $this->session->set_flashdata('msg', swal("succ", "Data berhasil divalidasi."));
-            }else{
-                $this->session->set_flashdata('msg', swal("err", "Data gagal divalidasi."));
+            $data = $this->M_hasil_pemeriksaan->select('', ['kode_registrasi' => $cek->kode_registrasi])->row();
+            
+            if ($data->hasil != 0 && $data->tgl_pengujian != null && $data->tgl_selesai != null) {
+                $arr = array(
+                    'status'    => 'VALID',
+                    'id'        => $id
+                );
+                $result = $this->M_pemeriksaan->update($arr);
+
+                $hasil = [
+                    'hasil_id' => $data->hasil_id,
+                    'dokter' => $this->userdata->nama
+                ];
+
+                $this->M_hasil_pemeriksaan->update($hasil);
+
+
+                if ($result){
+                    $this->session->set_flashdata('msg', swal("succ", "Data berhasil divalidasi."));
+                } else {
+                    $this->session->set_flashdata('msg', swal("err", "Data gagal divalidasi."));
+                }
+            } else {
+                $this->session->set_flashdata('msg', swal("err", "Data tidak dapat divalidasi karena Hasil, Tanggal Pengujian, atau Tanggal Selesai belum diisi!"));
             }
-        }else{
+
+        } else {
             $this->session->set_flashdata('msg', swal("err", "Data gagal divalidasi."));
         }
-		redirect($this->uri->segment(1)."/".$this->uri->segment(2));
+        redirect($this->uri->segment(1)."/".$this->uri->segment(2));
     }
 }

@@ -40,7 +40,8 @@ class M_hasil_pemeriksaan extends CI_Model {
 			'parameter'			=> @$data['parameter'],
 			'hasil'				=> @$data['hasil'] ?? 0.0,
 			'tgl_pengujian'		=> @$data['tgl_pengujian'] ?? null,
-			'tgl_selesai'		=> @$data['tgl_selesai'] ?? null
+			'tgl_selesai'		=> @$data['tgl_selesai'] ?? null,
+			'dokter'			=> @$data['dokter'] ?? null
 		);
 
 		$response = $this->db->insert('tbl_hasil_pemeriksaan', $arr);

@@ -126,7 +126,7 @@
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <table width="100%">
-                                                                            <tr>
+                                                                            <tr class="text-dark">
                                                                                 <th>Parameter</th>
                                                                                 <th>Hasil</th>
                                                                                 <th>Tgl Pengujian</th>

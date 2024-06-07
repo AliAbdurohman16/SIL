@@ -295,7 +295,7 @@
             <br>
             <br>
             <br>
-            <p>dr. Nelly Ratnasari</p>
+            <p><?= $data->dokter ?></p>
         </div>
     </div>
 </body>
