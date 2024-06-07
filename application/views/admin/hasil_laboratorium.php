@@ -44,7 +44,7 @@
                                     <td><?= $key->kode_registrasi ?></td>
                                     <td><?= $key->nama ?></td>
                                     <td><?= $key->parameter ?></td>
-                                    <td><?= $key->hasil ?></td>
+                                    <td><?= $key->hasil ?> <?= $key->satuan ?></td>
                                     <td><?= date('d-m-Y H:i:s', strtotime($key->tgl_pengujian) ) ?></td>
                                     <td><?= date('d-m-Y H:i:s', strtotime($key->tgl_selesai) ) ?></td>
                                     <td>
