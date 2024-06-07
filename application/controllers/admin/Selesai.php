@@ -13,7 +13,7 @@ class Selesai extends AUTH_Controller {
 	{
         $data = [
             'title' => "Selesai",
-            'data'  => $this->M_pemeriksaan->select('', ['status !=' => 'AKTIF'])->result()
+            'data'  => $this->M_pemeriksaan->select('', ['status' => 'SELESAI'])->result()
         ];
         $this->load->view('admin/partials/header', $data);
         $this->load->view('admin/partials/sidenav', $data);
@@ -59,7 +59,7 @@ class Selesai extends AUTH_Controller {
     public function verifnow($id)
     {
         $arr = array(
-            'status'    => 'VERIF',
+            'status'    => 'SELESAI',
             'id'        => $id
         );
 
