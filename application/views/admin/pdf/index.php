@@ -126,20 +126,8 @@
             margin: 0;
         }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>
-    <!-- <script>
-        function generateBarcode() {
-            const kodeRegistrasi = "<?= $data->no_rekam_medis ?>";
-            JsBarcode("#barcode", kodeRegistrasi, {
-                format: "CODE128",
-                displayValue: false,
-                width: 7,
-                height: 300
-            });
-        }
-    </script> -->
 </head>
-<body onload="generateBarcode(); window.print()">
+<body>
     <table class="header-table">
         <tr>
             <td><img src="<?= base_url('public/assets/img-kop/uptd.png') ?>" width="70" height="80" alt="uptd"></td>
@@ -157,14 +145,6 @@
             <td colspan="3"><hr></td>
         </tr>
     </table>
-    <!-- <table>
-        <thead>
-            <tr>
-                <td><svg id="barcode" class="barcode"></svg></td>
-                <td class="penanggung-jawab">Penanggung jawab: <?= $data->penanggung_jawab ?></td>
-            </tr>
-        </thead>
-    </table> -->
     <table class="patient-doctor-table">
         <thead>
             <tr>
@@ -298,5 +278,11 @@
             <p><?= $data->dokter ?></p>
         </div>
     </div>
+
+    <script>
+        window.onload = function() {
+        window.print();
+        };
+    </script>
 </body>
 </html>
