@@ -53,11 +53,16 @@
                                                 <i class="fa fa-file-pdf"></i> Export PDF
                                             </button>
                                         </a>
-                                        <a href="<?= base_url() ?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/exportPDF/<?= $key->hasil_id ?>">
+                                        <!-- <a href="<?= base_url() ?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/sendEmail/<?= $key->hasil_id ?>">
                                             <button class="btn btn-info">
                                                 <i class="fa fa-envelope"></i> Kirim Email
                                             </button>
-                                        </a>
+                                        </a> -->
+                                        <form action="<?= base_url() ?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/sendEmail/<?= $key->hasil_id ?>" method="post">
+                                            <button type="submit" class="btn btn-info">
+                                                <i class="fa fa-envelope"></i> Kirim Email
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             <?php } ?>
