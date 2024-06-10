@@ -41,8 +41,8 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-12 col-sm-12">
                                     <div class="mb-3">
-                                        <label for="noRM" class="form-label">No RM</label>
-                                        <input type="text" class="form-control" id="noRM" onchange="cekRM()" name="no_rekam_medis" placeholder="Masukan No RM">
+                                        <label for="noRM" class="form-label">No RM *</label>
+                                        <input type="text" class="form-control" id="noRM" onchange="cekRM()" name="no_rekam_medis" placeholder="Masukan No RM" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="kodeReg" class="form-label">Kode Registrasi</label>
@@ -82,35 +82,35 @@
                                 <div class="col-lg-6 col-md-12 col-sm-12">
                                     <div class="mb-3">
                                         <label for="nik" class="form-label">NIK *</label>
-                                        <input type="number" class="form-control" id="nik" name="nik" placeholder="Masukan NIK">
+                                        <input type="number" class="form-control" id="nik" name="nik" placeholder="Masukan NIK" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="nama" class="form-label">Nama</label>
-                                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukan nama">
+                                        <label for="nama" class="form-label">Nama *</label>
+                                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukan nama" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="email" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="Masukan Email">
+                                        <label for="email" class="form-label">Email *</label>
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Masukan Email" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="alamat" class="form-label">Alamat</label>
-                                        <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukan alamat">
+                                        <label for="alamat" class="form-label">Alamat *</label>
+                                        <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukan alamat" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="tempatLahir" class="form-label">Tempat Lahir</label>
-                                        <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Masukan Tempat Lahir">
+                                        <label for="tempatLahir" class="form-label">Tempat Lahir *</label>
+                                        <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Masukan Tempat Lahir" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="tanggalLahir" class="form-label">Tanggal Lahir</label>
-                                        <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" placeholder="Masukan tanggal Lahir">
+                                        <label for="tanggalLahir" class="form-label">Tanggal Lahir *</label>
+                                        <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" placeholder="Masukan tanggal Lahir" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
-                                        <input type="text" class="form-control" id="jenis_kelamin" name="jenis_kelamin" placeholder="Masukan Jenis Kelamin">
+                                        <label for="jenisKelamin" class="form-label">Jenis Kelamin *</label>
+                                        <input type="text" class="form-control" id="jenis_kelamin" name="jenis_kelamin" placeholder="Masukan Jenis Kelamin" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="noHP" class="form-label">No Hp</label>
-                                        <input type="Number" class="form-control" id="no_hp" name="no_hp" placeholder="Masukan No Hp">
+                                        <label for="noHP" class="form-label">No Hp *</label>
+                                        <input type="Number" class="form-control" id="no_hp" name="no_hp" placeholder="Masukan No Hp" required>
                                     </div>
                                 </div>
                             </div>
