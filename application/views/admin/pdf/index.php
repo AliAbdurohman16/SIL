@@ -107,17 +107,9 @@
         .text-center {
             text-align: center;
         }
-        .info-surat {
-            width: 680px;
-            margin: auto;
-        }
-        .point-info {
-            width: 385px;
-            font-size: 10pt;
-        }
         .tanda-tangan {
             width: 650px;
-            margin: 0 auto;
+            margin: 40px auto;
             display: flex;
             justify-content: flex-end;
         }
@@ -255,13 +247,6 @@
                 <?php } ?>
             </tbody>
         </table>
-    </div>
-    <div class="info-surat">
-        <ol class="point-info">
-            <li>Hasil pemeriksaan diatas hanya berlaku untuk sample yang diperiksa.</li>
-            <li>Laporan hasil pemeriksaan ini terdiri dari 1halaman.</li>
-            <li>Laporan hasil pemeriksaan ini tidak boleh digandakan, kecuali secara lengkap dan seijin tertulis dari UPTD Laboratorium Kesehatan Provinsi Kalimantan Timur.</li>
-        </ol>
     </div>
     <div class="tanda-tangan">
         <div class="tanda-tangan-content">
