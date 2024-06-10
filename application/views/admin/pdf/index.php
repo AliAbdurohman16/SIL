@@ -28,7 +28,7 @@
         }
         .header-table .centered font {
             display: block;
-            margin: none;
+            margin: 3px 0;
         }
         hr {
             border: 2px solid black;
@@ -130,16 +130,11 @@
 <body>
     <table class="header-table">
         <tr>
-            <td><img src="<?= base_url('public/assets/img-kop/uptd.png') ?>" width="70" height="80" alt="uptd"></td>
+            <td><img src="<?= base_url('public/assets/img-kop/kemenkes.png') ?>" width="70" height="80" alt="kemenkes"></td>
             <td class="centered">
-                <font size="2"><b>LABORATORIUM PENGUJI DAN MEDIK</b></font>
-                <font size="3"><b>BADAN LAYANAN UMUM DAERAH (BLUD)</b></font>
-                <font size="3"><b>UPTD LABORATORIUM KESEHATAN PROVINSI KALIMANTAN TIMUR</b></font>
-                <font size="1">Jl. KH. Akhmad Dahlan No. 27 Telp. (0541) 741732 Fax. (0541) 205754</font>
-                <font size="1">Email: labkesprovinsikaltim@gmail.com, Website: www.labkeskaltim.com</font>
-                <font size="1">SAMARINDA, 75117</font>
+                <font size="4"><b>LABORATORIUM KLINIK POLKESYO</b></font>
+                <font size="2">Jalan Ngadinegaran MJ 3 No.62, Mantrijeron, Kec. Mantrijeron, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55141</font>
             </td>
-            <td><img src="<?= base_url('public/assets/img-kop/kan.png') ?>" width="80" height="80" alt="kan"></td>
         </tr>
         <tr>
             <td colspan="3"><hr></td>
