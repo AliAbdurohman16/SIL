@@ -101,4 +101,44 @@ class Klinik extends AUTH_Controller {
 
         echo json_encode($dataReturn);
     }
+
+    public function cekNik()
+    {
+        $data = $this->input->get();
+
+        $cekData = $this->M_customers->select('', ['nik' => $data['nik']]);
+        if ($cekData->num_rows() > 0){
+            $dataReturn = array(
+                'status' => true,
+                'data'   => $cekData->row()
+            );
+        }else{
+            $dataReturn = array(
+                'status' => false,
+                'data'   => null
+            );
+        }
+
+        echo json_encode($dataReturn);
+    }
+
+    public function cekNama()
+    {
+        $data = $this->input->get();
+
+        $cekData = $this->M_customers->select('', ['nama' => $data['nama']]);
+        if ($cekData->num_rows() > 0){
+            $dataReturn = array(
+                'status' => true,
+                'data'   => $cekData->row()
+            );
+        }else{
+            $dataReturn = array(
+                'status' => false,
+                'data'   => null
+            );
+        }
+
+        echo json_encode($dataReturn);
+    }
 }

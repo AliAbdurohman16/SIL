@@ -82,11 +82,11 @@
                                 <div class="col-lg-6 col-md-12 col-sm-12">
                                     <div class="mb-3">
                                         <label for="nik" class="form-label">NIK *</label>
-                                        <input type="number" class="form-control" id="nik" name="nik" placeholder="Masukan NIK" required>
+                                        <input type="number" class="form-control" id="nik" name="nik" placeholder="Masukan NIK" onchange="cekNik()" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="nama" class="form-label">Nama *</label>
-                                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukan nama" required>
+                                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukan nama" onchange="cekNama()" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email *</label>
@@ -174,7 +174,7 @@
     function cekRM()
     {
         let noRM = $('#noRM').val();
-        $.get('<?=base_url()?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/cekRM', 'noRM='+noRM, function(data) {
+        $.get('<?=base_url()?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/cekRM', { noRM: noRM }, function(data) {
             data = JSON.parse(data);
             if (data.status == true){
                 $('#nik').val(data.data.nik);
@@ -185,7 +185,49 @@
                 $('#tanggal_lahir').val(data.data.tanggal_lahir);
                 $('#jenis_kelamin').val(data.data.jenis_kelamin);
                 $('#no_hp').val(data.data.no_hp);
+            } else {
+                alert('No RM tidak ditemukan');
             }
-        })
+        });
+    }
+
+    function cekNik()
+    {
+        let nik = $('#nik').val();
+        $.get('<?=base_url()?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/cekNik', { nik: nik }, function(data) {
+            data = JSON.parse(data);
+            if (data.status == true){
+                $('#noRM').val(data.data.no_rekam_medis);
+                $('#nama').val(data.data.nama);
+                $('#email').val(data.data.email);
+                $('#alamat').val(data.data.alamat);
+                $('#tempat_lahir').val(data.data.tempat_lahir);
+                $('#tanggal_lahir').val(data.data.tanggal_lahir);
+                $('#jenis_kelamin').val(data.data.jenis_kelamin);
+                $('#no_hp').val(data.data.no_hp);
+            } else {
+                alert('NIK tidak ditemukan');
+            }
+        });
+    }
+
+    function cekNama()
+    {
+        let nama = $('#nama').val();
+        $.get('<?=base_url()?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/cekNama', { nama: nama }, function(data) {
+            data = JSON.parse(data);
+            if (data.status == true){
+                $('#noRM').val(data.data.no_rekam_medis);
+                $('#nik').val(data.data.nik);
+                $('#email').val(data.data.email);
+                $('#alamat').val(data.data.alamat);
+                $('#tempat_lahir').val(data.data.tempat_lahir);
+                $('#tanggal_lahir').val(data.data.tanggal_lahir);
+                $('#jenis_kelamin').val(data.data.jenis_kelamin);
+                $('#no_hp').val(data.data.no_hp);
+            } else {
+                alert('Nama tidak ditemukan');
+            }
+        });
     }
 </script>
