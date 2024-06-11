@@ -106,7 +106,12 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="jenisKelamin" class="form-label">Jenis Kelamin *</label>
-                                        <input type="text" class="form-control" id="jenis_kelamin" name="jenis_kelamin" placeholder="Masukan Jenis Kelamin" required>
+                                        <!-- <input type="text" class="form-control" id="jenis_kelamin" name="jenis_kelamin" placeholder="Masukan Jenis Kelamin" required> -->
+                                        <select name="jenis_kelamin" class="form-control" required>
+                                            <option value="">Pilih Jenis Kelamin</option>
+                                            <option value="Laki-laki">Laki-laki</option>
+                                            <option value="Perempuan">Perempuan</option>
+                                        </select>
                                     </div>
                                     <div class="mb-3">
                                         <label for="noHP" class="form-label">No Hp *</label>
