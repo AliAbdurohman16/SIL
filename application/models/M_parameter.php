@@ -10,8 +10,6 @@ class M_parameter extends CI_Model {
 		if ($where != ''){
 			$this->db->where($where);
 		}
-					$this->db->select('tbl_parameter.*');
-					$this->db->join('tbl_jenis_pemeriksaan', 'tbl_jenis_pemeriksaan.nama = tbl_parameter.jenis_pemeriksaan');
 					$this->db->from('tbl_parameter');
 		$response = $this->db->get();
 		return $response;
@@ -23,7 +21,7 @@ class M_parameter extends CI_Model {
 			'kode'					=> @$data['kode'],
 			'nama'					=> @$data['nama'],
 			'satuan'				=> @$data['satuan'],
-			'jenis_pemeriksaan'		=> @$data['jenis_pemeriksaan'],
+			'tarif'					=> @$data['tarif'],
 		);
 
 		$response = $this->db->insert('tbl_parameter', $arr);
