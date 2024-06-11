@@ -117,6 +117,11 @@
             text-align: center;
             margin: 0;
         }
+        .ttd {
+            margin: 8px 0 8px 38px;
+            width: 70px;
+            height: 70px;
+        }
     </style>
 </head>
 <body>
@@ -252,9 +257,7 @@
         <div class="tanda-tangan-content">
             <p>Kalimantan, 5 Juni 2024</p>
             <p>Dokter Umum</p>
-            <br>
-            <br>
-            <br>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=<?= urlencode(base_url('public/assets/ttd/ttd.png')) ?>" class="ttd" alt="ttd qr code">
             <p><?= $data->dokter ?></p>
         </div>
     </div>
