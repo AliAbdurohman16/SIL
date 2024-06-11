@@ -33,6 +33,7 @@
                                 <th>Kode Registrasi</th>
                                 <th>Nama</th>
                                 <th>Jenis Pemeriksaan</th>
+                                <th>Parameter</th>
                                 <th>Tanggal</th>
                                 <th>Status</th>
                                 <th>Total</th>
@@ -46,6 +47,7 @@
                                 <td><?= $key->kode_registrasi ?></td>
                                 <td><?= $key->nama ?></td>
                                 <td><?= $key->jenis_pemeriksaan ?></td>
+                                <td><?= $key->parameter?></td>
                                 <td><?= date('d-m-Y H:i:s', strtotime($key->tanggal)) ?></td>
                                 <td><span class="badge bg-success"><?= $key->status ?></td>
                                 <td>Rp <?= number_format($key->total, 0, ',', '.') ?></td>

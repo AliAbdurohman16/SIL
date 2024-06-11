@@ -46,6 +46,7 @@ class Klinik extends AUTH_Controller {
             'kode_registrasi'   => $data['kode_registrasi'],
             'nama'              => $data['nama'],
             'jenis_pemeriksaan' => $data['jenis_pemeriksaan'],
+            'parameter'         => $data['parameter'],
             'tanggal'           => date('Y-m-d H:i:s'),
             'total'             => $paremeter->tarif
         ];

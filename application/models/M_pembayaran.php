@@ -22,6 +22,7 @@ class M_Pembayaran extends CI_Model {
 			'kode_registrasi'			=> @$data['kode_registrasi'],
             'nama'                      => @$data['nama'],
 			'jenis_pemeriksaan'			=> @$data['jenis_pemeriksaan'],
+			'parameter'			=> @$data['parameter'],
 			'tanggal'		            => @$data['tanggal'],
             'total'                     => @$data['total']
 		);
