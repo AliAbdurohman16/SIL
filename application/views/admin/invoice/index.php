@@ -4,10 +4,11 @@
             <div class="card">
                 <div class="card-body">
                     <div class="mb-4">
+                        <svg id="barcode" class="barcode"></svg>
                         <b>Kode Invoice:</b> <?= $data->invoice ?> <br>
                         <b>Kode Registrasi:</b> <?= $data->kode_registrasi ?>  <br>
                         <b>Nama Pasien:</b> <?= $data->nama ?> <br>
-                        <b>Status:</strong> <?= $data->status?>
+                        <b>Status:</strong> <?= $data->status?><br>
                     </div>
                     <table class="table">
                     <thead>
@@ -37,8 +38,19 @@
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>
 <script>
     window.onload = function() {
-      window.print();
+        generateBarcode();
+        window.print();
     };
+
+    function generateBarcode() {
+        const kodeRegistrasi = "<?= $data->invoice ?>";
+        JsBarcode("#barcode", kodeRegistrasi, {
+            displayValue: false,
+            width: 1,
+            height: 28
+        });
+    }
 </script>
