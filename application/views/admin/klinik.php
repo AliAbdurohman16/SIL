@@ -56,13 +56,18 @@
                                             <?php } ?>
                                         </select>
                                     </div>
-                                    <div class="mb-3">
+                                    <div class="mb-3" style="display: flex; flex-wrap: wrap;">
                                         <label for="pemeriksaan" class="form-label">Parameter *</label>
-                                        <select name="parameter" class="form-control" id="pemeriksaan" required>
+                                        <div id="pemeriksaan" style="display: flex; flex-wrap: wrap;">
                                             <?php foreach ($this->M_parameter->select()->result() as $key) { ?>
-                                            <option value="<?=$key->nama?>"><?=$key->nama?></option>
+                                                <div class="form-check" style="margin-right: 20px;">
+                                                    <input class="form-check-input" type="checkbox" name="parameter[]" value="<?=$key->nama?>" id="param<?=$key->id?>">
+                                                    <label class="form-check-label" for="param<?=$key->id?>">
+                                                        <?=$key->nama?>
+                                                    </label>
+                                                </div>
                                             <?php } ?>
-                                        </select>
+                                        </div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="cito" class="form-label">CITO</label>
