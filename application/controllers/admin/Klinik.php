@@ -8,7 +8,7 @@ class Klinik extends AUTH_Controller {
         $this->load->model('M_pemeriksaan');
         $this->load->model('M_customers');
         $this->load->model('M_pembayaran');
-        $this->load->model('M_jenis_pemeriksaan');
+        $this->load->model('M_parameter');
         $this->load->model('M_hasil_pemeriksaan');
 	}
 	
@@ -39,7 +39,7 @@ class Klinik extends AUTH_Controller {
 
         $result = $this->M_pemeriksaan->insert($data);
 
-        $jenis = $this->M_jenis_pemeriksaan->select('', ['nama' => $data['jenis_pemeriksaan']])->row();
+        $paremeter = $this->M_parameter->select('', ['nama' => $data['parameter']])->row();
 
         $dataPembayaran = [
             'invoice'           => 'INV' . rand(1000, 9999),
@@ -47,7 +47,7 @@ class Klinik extends AUTH_Controller {
             'nama'              => $data['nama'],
             'jenis_pemeriksaan' => $data['jenis_pemeriksaan'],
             'tanggal'           => date('Y-m-d H:i:s'),
-            'total'             => $jenis->tarif
+            'total'             => $paremeter->tarif
         ];
 
         $this->M_pembayaran->insert($dataPembayaran);
