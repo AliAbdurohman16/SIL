@@ -106,7 +106,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="jenisKelamin" class="form-label">Jenis Kelamin *</label>
-                                        <select name="jenis_kelamin" class="form-control" required>
+                                        <select name="jenis_kelamin" class="form-control" id="jenisKelamin" required>
                                             <option value="">Pilih Jenis Kelamin</option>
                                             <option value="Laki-laki">Laki-laki</option>
                                             <option value="Perempuan">Perempuan</option>
@@ -185,7 +185,7 @@
                 $('#alamat').val(data.data.alamat);
                 $('#tempat_lahir').val(data.data.tempat_lahir);
                 $('#tanggal_lahir').val(data.data.tanggal_lahir);
-                $('#jenis_kelamin').val(data.data.jenis_kelamin);
+                $('select[name="jenis_kelamin"]').val(data.data.jenis_kelamin);
                 $('#no_hp').val(data.data.no_hp);
             } else {
                 alert('No RM tidak ditemukan');
@@ -205,7 +205,7 @@
                 $('#alamat').val(data.data.alamat);
                 $('#tempat_lahir').val(data.data.tempat_lahir);
                 $('#tanggal_lahir').val(data.data.tanggal_lahir);
-                $('#jenis_kelamin').val(data.data.jenis_kelamin);
+                $('select[name="jenis_kelamin"]').val(data.data.jenis_kelamin);
                 $('#no_hp').val(data.data.no_hp);
             } else {
                 alert('NIK tidak ditemukan');
@@ -225,7 +225,7 @@
                 $('#alamat').val(data.data.alamat);
                 $('#tempat_lahir').val(data.data.tempat_lahir);
                 $('#tanggal_lahir').val(data.data.tanggal_lahir);
-                $('#jenis_kelamin').val(data.data.jenis_kelamin);
+                $('select[name="jenis_kelamin"]').val(data.data.jenis_kelamin);
                 $('#no_hp').val(data.data.no_hp);
             } else {
                 alert('Nama tidak ditemukan');
