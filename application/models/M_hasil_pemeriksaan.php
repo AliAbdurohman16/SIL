@@ -23,7 +23,7 @@ class M_hasil_pemeriksaan extends CI_Model {
 			$this->db->where($where);
 		}
 		
-					$this->db->select('tbl_hasil_pemeriksaan.*, tbl_pemeriksaan.*, tbl_customers.*, tbl_parameter.jenis_pemeriksaan, tbl_parameter.satuan');
+					$this->db->select('tbl_hasil_pemeriksaan.*, tbl_pemeriksaan.*, tbl_customers.*, tbl_parameter.satuan');
 					$this->db->join('tbl_pemeriksaan', 'tbl_pemeriksaan.kode_registrasi = tbl_hasil_pemeriksaan.kode_registrasi');
 					$this->db->join('tbl_customers', 'tbl_customers.no_rekam_medis = tbl_pemeriksaan.no_rekam_medis', 'left');
 					$this->db->join('tbl_parameter', 'tbl_parameter.nama = tbl_hasil_pemeriksaan.parameter', 'left');
