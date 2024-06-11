@@ -13,37 +13,39 @@
                         <svg id="barcode" class="barcode"></svg> <br>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6">
-                        <span><strong>Kode Invoice:</strong> <?= $data->invoice ?> <br></span>
-                        <span><strong>Kode Registrasi:</strong> <?= $data->kode_registrasi ?>  <br></span>
+                        <span><strong>Kode Invoice:</strong> <?= $data['invoice'] ?> <br></span>
+                        <span><strong>Kode Registrasi:</strong> <?= $data['kode_registrasi'] ?>  <br></span>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6">
-                        <span><strong>Nama Pasien:</strong> <?= $data->nama ?> <br></span>
-                        <span><strong>Status:</strong> <?= $data->status?><br></span>
+                        <span><strong>Nama Pasien:</strong> <?= $data['nama'] ?> <br></span>
+                        <span><strong>Status:</strong> <?= $data['status']?><br></span>
                     </div>
                 </div>
                 <table class="table">
-                <thead>
-                    <tr>
-                    <th>Jenis Pemeriksaan</th>
-                    <th>Parameter</th>
-                    <th>Tanggal</th>
-                    <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><?= $data->jenis_pemeriksaan ?></td>
-                        <td><?= $data->parameter?></td>
-                        <td><?= date('d-m-Y H:i:s', strtotime($data->tanggal)) ?></td>
-                        <td>Rp <?= number_format($data->total, 0, ',', '.') ?></td>
-                    </tr>
-                </tbody>
-                <!-- <tfoot>
-                    <tr>
-                    <td colspan="3" class="text-right"><strong>Total:</strong></td>
-                    <td>Rp </td>
-                    </tr>
-                </tfoot> -->
+                    <thead>
+                        <tr>
+                            <th>Jenis Pemeriksaan</th>
+                            <th>Parameter</th>
+                            <th>Tanggal</th>
+                            <th>Harga</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($data['detail_pembayaran'] as $detail) { ?>
+                        <tr>
+                            <td><?= $data['jenis_pemeriksaan'] ?></td>
+                            <td><?= $detail['parameter']?></td>
+                            <td><?= date('d-m-Y', strtotime($data['tanggal'])) ?></td>
+                            <td>Rp <?= number_format($detail['tarif'], 0, ',', '.') ?></td>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3" style="text-align: right;"><strong>Total</strong></td>
+                            <td>Rp <?= $data['total']?></td>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>
@@ -58,7 +60,7 @@
     };
 
     function generateBarcode() {
-        const kodeRegistrasi = "<?= $data->invoice ?>";
+        const kodeRegistrasi = "<?= $data['invoice'] ?>";
         JsBarcode("#barcode", kodeRegistrasi, {
             displayValue: false,
             width: 1,

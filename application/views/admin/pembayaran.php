@@ -43,16 +43,20 @@
                         <tbody>
                             <?php foreach ($data as $key) { ?>
                                 <tr>
-                                <td><?= $key->invoice ?></td>
-                                <td><?= $key->kode_registrasi ?></td>
-                                <td><?= $key->nama ?></td>
-                                <td><?= $key->jenis_pemeriksaan ?></td>
-                                <td><?= $key->parameter?></td>
-                                <td><?= date('d-m-Y H:i:s', strtotime($key->tanggal)) ?></td>
-                                <td><span class="badge bg-success"><?= $key->status ?></td>
-                                <td>Rp <?= number_format($key->total, 0, ',', '.') ?></td>
+                                <td><?= $key['invoice'] ?></td>
+                                <td><?= $key['kode_registrasi'] ?></td>
+                                <td><?= $key['nama'] ?></td>
+                                <td><?= $key['jenis_pemeriksaan'] ?></td>
                                 <td>
-                                    <a href="<?= base_url() ?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/cetakInvoice/<?= $key->invoice ?>">
+                                    <?php foreach ($key['detail_pembayaran'] as $detail) { ?>
+                                        <?= $detail['parameter'] ?>, 
+                                    <?php } ?>
+                                </td>
+                                <td><?= date('d-m-Y H:i:s', strtotime($key['tanggal'])) ?></td>
+                                <td><span class="badge bg-success"><?= $key['status'] ?></td>
+                                <td>Rp <?= number_format($key['total'], 0, ',', '.') ?></td>
+                                <td>
+                                    <a href="<?= base_url() ?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/cetakInvoice/<?= $key['invoice'] ?>">
                                         <button class="btn btn-info">
                                             <i class="fa fa-print"></i> Cetak Invoice
                                         </button>
