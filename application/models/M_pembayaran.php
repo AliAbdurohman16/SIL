@@ -61,15 +61,6 @@ class M_pembayaran extends CI_Model {
 
 		return $this->db->delete('tbl_pembayaran', $arr);
 	}
-
-    public function report($start_date, $end_date){
-        $this->db->select('*');
-        $this->db->from('tbl_pembayaran');
-        $this->db->where('tanggal >=', $start_date);
-        $this->db->where('tanggal <=', $end_date);
-        $response = $this->db->get();
-        return $response;
-    }
     
 	public function getMonthlyIncome() {
         $currentMonth = date('m');

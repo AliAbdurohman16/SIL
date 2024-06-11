@@ -12,6 +12,7 @@
                             <tr>
                                 <th>Pasien</th>
                                 <th>Pemeriksaan</th>
+                                <th>Parameter</th>
                                 <th>Tanggal</th>
                                 <th>Total</th>
                             </tr>
@@ -20,19 +21,20 @@
                         <?php 
                             $total = 0;
                             foreach($data as $key) { 
-                                $total += $key->total;
+                                $total += $key->tarif;
                         ?>
                                 <tr>
                                     <td class="truncate-text"><?= $key->nama ?></td>
                                     <td class="truncate-text"><?= $key->jenis_pemeriksaan ?></td>
+                                    <td><?= $key->parameter ?></td>
                                     <td><?= date('d-m-Y', strtotime($key->tanggal)) ?></td>
-                                    <td><?= number_format($key->total, 0, ',', '.') ?></td>
+                                    <td><?= number_format($key->tarif, 0, ',', '.') ?></td>
                                 </tr>
                             <?php } ?>
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="3" style="text-align: right;"><strong>Total :</strong></td>
+                                <td colspan="4" style="text-align: right;"><strong>Total :</strong></td>
                                 <td><?= number_format($total, 0, ',', '.') ?></td>
                             </tr>
                         </tfoot>

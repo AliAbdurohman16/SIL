@@ -34,7 +34,6 @@ class M_detail_pembayaran extends CI_Model {
 		return $response;
 	}
 
-
 	public function delete($id){
         $arr = array(
             'id' => $id
@@ -43,24 +42,14 @@ class M_detail_pembayaran extends CI_Model {
 		return $this->db->delete('tbl_detail_pembayaran', $arr);
 	}
 
-    public function report($start_date, $end_date){
-        $this->db->select('*');
-        $this->db->from('tbl_detail_pembayaran');
+	public function report($start_date, $end_date) {
+        $this->db->select('tbl_detail_pembayaran.*, tbl_pembayaran.*');
+		$this->db->join('tbl_detail_pembayaran', 'tbl_detail_pembayaran.invoice = tbl_pembayaran.invoice');
+        $this->db->from('tbl_pembayaran');
         $this->db->where('tanggal >=', $start_date);
         $this->db->where('tanggal <=', $end_date);
         $response = $this->db->get();
         return $response;
-    }
-    
-	public function getMonthlyIncome() {
-        $currentMonth = date('m');
-        $currentYear = date('Y');
-        
-        $this->db->select('SUM(total) as total_pendapatan');
-        $this->db->where('MONTH(tanggal)', $currentMonth);
-        $this->db->where('YEAR(tanggal)', $currentYear);
-        $query = $this->db->get('tbl_detail_pembayaran');
-        return $query->row()->total_pendapatan;
     }
 }
 
