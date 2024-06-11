@@ -135,8 +135,6 @@
                             <tr>
                                 <th>Kode</th>
                                 <th>Nama</th>
-                                <!-- <th>Pemeriksaan</th> -->
-                                <!-- <th>Jenis Sample</th> -->
                                 <th>Status</th>
                                 <th>Tanggal</th>
                                 <th>Action</th>
