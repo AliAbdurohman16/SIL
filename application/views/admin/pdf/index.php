@@ -28,7 +28,7 @@
         }
         .header-table .centered font {
             display: block;
-            margin: none;
+            margin: 3px 0;
         }
         hr {
             border: 2px solid black;
@@ -107,17 +107,9 @@
         .text-center {
             text-align: center;
         }
-        .info-surat {
-            width: 680px;
-            margin: auto;
-        }
-        .point-info {
-            width: 385px;
-            font-size: 10pt;
-        }
         .tanda-tangan {
             width: 650px;
-            margin: 0 auto;
+            margin: 40px auto;
             display: flex;
             justify-content: flex-end;
         }
@@ -125,21 +117,21 @@
             text-align: center;
             margin: 0;
         }
+        .ttd {
+            margin: 8px 0 8px 38px;
+            width: 70px;
+            height: 70px;
+        }
     </style>
 </head>
 <body>
     <table class="header-table">
         <tr>
-            <td><img src="<?= base_url('public/assets/img-kop/uptd.png') ?>" width="70" height="80" alt="uptd"></td>
+            <td><img src="<?= base_url('public/assets/img-kop/kemenkes.png') ?>" width="70" height="80" alt="kemenkes"></td>
             <td class="centered">
-                <font size="2"><b>LABORATORIUM PENGUJI DAN MEDIK</b></font>
-                <font size="3"><b>BADAN LAYANAN UMUM DAERAH (BLUD)</b></font>
-                <font size="3"><b>UPTD LABORATORIUM KESEHATAN PROVINSI KALIMANTAN TIMUR</b></font>
-                <font size="1">Jl. KH. Akhmad Dahlan No. 27 Telp. (0541) 741732 Fax. (0541) 205754</font>
-                <font size="1">Email: labkesprovinsikaltim@gmail.com, Website: www.labkeskaltim.com</font>
-                <font size="1">SAMARINDA, 75117</font>
+                <font size="4"><b>LABORATORIUM KLINIK POLKESYO</b></font>
+                <font size="2">Jalan Ngadinegaran MJ 3 No.62, Mantrijeron, Kec. Mantrijeron, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55141</font>
             </td>
-            <td><img src="<?= base_url('public/assets/img-kop/kan.png') ?>" width="80" height="80" alt="kan"></td>
         </tr>
         <tr>
             <td colspan="3"><hr></td>
@@ -261,20 +253,11 @@
             </tbody>
         </table>
     </div>
-    <div class="info-surat">
-        <ol class="point-info">
-            <li>Hasil pemeriksaan diatas hanya berlaku untuk sample yang diperiksa.</li>
-            <li>Laporan hasil pemeriksaan ini terdiri dari 1halaman.</li>
-            <li>Laporan hasil pemeriksaan ini tidak boleh digandakan, kecuali secara lengkap dan seijin tertulis dari UPTD Laboratorium Kesehatan Provinsi Kalimantan Timur.</li>
-        </ol>
-    </div>
     <div class="tanda-tangan">
         <div class="tanda-tangan-content">
             <p>Kalimantan, 5 Juni 2024</p>
             <p>Dokter Umum</p>
-            <br>
-            <br>
-            <br>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=<?= urlencode(base_url('public/assets/ttd/ttd.png')) ?>" class="ttd" alt="ttd qr code">
             <p><?= $data->dokter ?></p>
         </div>
     </div>

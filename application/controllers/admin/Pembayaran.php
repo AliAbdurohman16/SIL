@@ -12,7 +12,7 @@ class Pembayaran extends AUTH_Controller {
     {
         $data = [
             'title' => "Pembayaran",
-            'data'  => $this->M_pembayaran->select()->result()
+            'data'  => $this->M_pembayaran->select()
         ];
 
         $this->load->view('admin/partials/header', $data);
@@ -26,7 +26,7 @@ class Pembayaran extends AUTH_Controller {
         $data['invoice'] = $invoice;
         $data = [
             'title' => "Invoice",
-            'data' => $this->M_pembayaran->select('', ['invoice' => $data['invoice']])->row()
+            'data' => $this->M_pembayaran->select('', ['invoice' => $data['invoice']])[0]
         ];
 
         $this->load->view('admin/partials/header', $data);

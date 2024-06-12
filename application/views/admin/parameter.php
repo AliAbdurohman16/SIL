@@ -41,15 +41,6 @@
                             <div class="row">
                                 
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-
-                                    <div class="mb-3">
-                                        <label for="jenisPem" class="form-label">Jenis Pemeriksaan</label>
-                                        <select name="jenis_pemeriksaan" class="form-control" id="jenisPem" required>
-                                            <?php foreach ($this->M_jenis_pemeriksaan->select()->result() as $key) { ?>
-                                            <option value="<?=$key->nama?>"><?=$key->kode?> - <?=$key->nama?></option>
-                                            <?php } ?>
-                                        </select>
-                                    </div>
                                     <div class="mb-3">
                                         <label for="kode" class="form-label">Kode</label>
                                         <input type="text" class="form-control" id="kode" placeholder="Kode" name="kode">
@@ -61,6 +52,10 @@
                                     <div class="mb-3">
                                         <label for="satuan" class="form-label">Satuan</label>
                                         <input type="text" class="form-control" id="satuan" placeholder="Satuan" name="satuan">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="tarif" class="form-label">Tarif</label>
+                                        <input type="text" class="form-control" id="tarif" placeholder="Tarif" name="tarif">
                                     </div>
                                 </div>
 
@@ -82,20 +77,20 @@
                     <table id="myTable" class="display">
                         <thead>
                             <tr>
-                                <th>Jenis Pemeriksaan</th>
                                 <th>Kode</th>
                                 <th>Nama</th>
                                 <th>Satuan</th>
+                                <th>Tarif</th>
                                 <th colspan="2">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($data as $key) { ?>
                                 <tr>
-                                <td><?= $key->jenis_pemeriksaan ?></td>
                                 <td><?= $key->kode ?></td>
                                 <td><?= $key->nama ?></td>
                                 <td><?= $key->satuan ?></td>
+                                <td><?= number_format(intval($key->tarif), 0, ',', '.') ?></td>
                                 <td>
 
                                     <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#editModal<?=$key->id?>">
@@ -155,6 +150,10 @@
                                                             <div class="mb-3">
                                                                 <label for="satuan" class="form-label">Satuan</label>
                                                                 <input type="text" class="form-control" id="satuan" placeholder="satuan" name="Satuan" value="<?=$key->satuan?>">
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="tarif" class="form-label">Tarif</label>
+                                                                <input type="text" class="form-control" id="tarif" placeholder="Tarif" name="tarif" value="<?=$key->tarif?>">
                                                             </div>
                                                         </div>
 

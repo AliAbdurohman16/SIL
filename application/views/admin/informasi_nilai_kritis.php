@@ -30,7 +30,7 @@
                             <thead>
                                 <tr>
                                     <th class="text-center" rowspan="3">Parameter</th>
-                                    <th class="text-center" colspan="16">Laboratorium</th>
+                                    <th class="text-center" colspan="14">Laboratorium</th>
                                 </tr>
                                 <tr>
                                     <th class="text-center" colspan="2">URMC Labs-Story</th>
@@ -40,7 +40,7 @@
                                     <th class="text-center" colspan="2">JIFCC</th>
                                     <th class="text-center" colspan="2">Massachuset General</th>
                                     <th class="text-center" colspan="2">Lab Polkesyo</th>
-                                    <th class="text-center" colspan="2">Laboratorium Lab Medik UPTD. Labkes Prov. Kaltim</th>
+                                    <!-- <th class="text-center" colspan="2">Laboratorium Lab Medik UPTD. Labkes Prov. Kaltim</th> -->
                                 </tr>
                                 <tr>
                                     <th class="text-center">Lower Limit</th>
@@ -57,11 +57,11 @@
                                     <th class="text-center">Upper Limit</th>
                                     <th class="text-center">Lower Limit</th>
                                     <th class="text-center">Upper Limit</th>
-                                    <th class="text-center">Lower Limit</th>
-                                    <th class="text-center">Upper Limit</th>
+                                    <!-- <th class="text-center">Lower Limit</th>
+                                    <th class="text-center">Upper Limit</th> -->
                                 </tr>
                                 <tr>
-                                    <th colspan="17">Hematologi</th>
+                                    <th colspan="15">Hematologi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -81,8 +81,8 @@
                                     <td></td>
                                     <td>< 5 mg/dl</td>
                                     <td>> 19,9 mg/dl</td>
-                                    <td>< 5 mg/dl</td>
-                                    <td>> 19,9 mg/dl</td>
+                                    <!-- <td>< 5 mg/dl</td>
+                                    <td>> 19,9 mg/dl</td> -->
                                 </tr>
                                 <tr>
                                     <td>Hb (Neonatus)</td>
@@ -100,8 +100,8 @@
                                     <td></td>
                                     <td>< 8.5 g/dl</td>
                                     <td>> 23 g/dl</td>
-                                    <td>< 5 mg/dl</td>
-                                    <td>> 19,9 mg/dl</td>
+                                    <!-- <td>< 5 mg/dl</td>
+                                    <td>> 19,9 mg/dl</td> -->
                                 </tr>
                                 <tr>
                                     <td>Leukosit</td>
@@ -119,8 +119,8 @@
                                     <td>> 50.000</td>
                                     <td>< 2.000</td>
                                     <td>> 50.000</td>
-                                    <td>< 2.000</td>
-                                    <td>> 50.000</td>
+                                    <!-- <td>< 2.000</td>
+                                    <td>> 50.000</td> -->
                                 </tr>
                                 <tr>
                                     <td>Hematokrit</td>
@@ -138,8 +138,8 @@
                                     <td></td>
                                     <td>< 18%</td>
                                     <td></td>
-                                    <td>< 18%</td>
-                                    <td></td>
+                                    <!-- <td>< 18%</td>
+                                    <td></td> -->
                                 </tr>
                                 <tr>
                                     <td>Trombosit</td>
@@ -157,8 +157,8 @@
                                     <td>> 999.000</td>
                                     <td>< 20.0000</td>
                                     <td>> 1.000.000</td>
-                                    <td>< 20.0000</td>
-                                    <td>> 1.000.000</td>
+                                    <!-- <td>< 20.0000</td>
+                                    <td>> 1.000.000</td> -->
                                 </tr>
                                 <tr>
                                     <td>GDS (Dewasa)</td>
@@ -176,8 +176,8 @@
                                     <td>> 500 mg/dl</td>
                                     <td>< 50 mg/dl</td>
                                     <td>> 450 mg/dl</td>
-                                    <td>< 50 mg/dl</td>
-                                    <td>> 450 mg/dl</td>
+                                    <!-- <td>< 50 mg/dl</td>
+                                    <td>> 450 mg/dl</td> -->
                                 </tr>
                                 <tr>
                                     <td>GDS (Neonatus)</td>
@@ -195,8 +195,8 @@
                                     <td></td>
                                     <td>< 30 mg/dl</td>
                                     <td>> 325 mg/dl</td>
-                                    <td>< 30 mg/dl</td>
-                                    <td>> 325 mg/dl</td>
+                                    <!-- <td>< 30 mg/dl</td>
+                                    <td>> 325 mg/dl</td> -->
                                 </tr>
                                 <tr>
                                     <td>Asam Urat</td>
@@ -214,8 +214,8 @@
                                     <td></td>
                                     <td></td>
                                     <td>> 13 mg/dl</td>
-                                    <td></td>
-                                    <td>> 13 mg/dl</td>
+                                    <!-- <td></td>
+                                    <td>> 13 mg/dl</td> -->
                                 </tr>
                                 <tr>
                                     <td>Ureum</td>
@@ -233,8 +233,8 @@
                                     <td></td>
                                     <td></td>
                                     <td>> 214 mg/dl</td>
-                                    <td></td>
-                                    <td>> 214 mg/dl</td>
+                                    <!-- <td></td>
+                                    <td>> 214 mg/dl</td> -->
                                 </tr>
                                 <tr>
                                     <td>Creatinin</td>
@@ -252,8 +252,8 @@
                                     <td></td>
                                     <td></td>
                                     <td>> 7,4 mg/dl</td>
-                                    <td></td>
-                                    <td>> 7,4 mg/dl</td>
+                                    <!-- <td></td>
+                                    <td>> 7,4 mg/dl</td> -->
                                 </tr>
                                 <tr>
                                     <td>Bilirubin (Dewasa)</td>
@@ -271,8 +271,8 @@
                                     <td></td>
                                     <td></td>
                                     <td>> 15 mg/ dl</td>
-                                    <td></td>
-                                    <td>> 15 mg/dl</td>
+                                    <!-- <td></td>
+                                    <td>> 15 mg/dl</td> -->
                                 </tr>
                                 <tr>
                                     <td>Bilirubin (Neonatus)</td>
@@ -290,35 +290,35 @@
                                     <td></td>
                                     <td></td>
                                     <td>> 14 mg/ dl</td>
-                                    <td></td>
-                                    <td>> 14 mg/ dl</td>
+                                    <!-- <td></td>
+                                    <td>> 14 mg/ dl</td> -->
                                 </tr>
                             </tbody>
                             <thead>
                                 <tr>
-                                    <th colspan="17">Mikrobiologi</th>
+                                    <th colspan="15">Mikrobiologi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td colspan="13">Kultur Darah</td>
                                     <td colspan="2">Apapun jenis mikroorganismenya</td>
-                                    <td colspan="2">Apapun jenis mikroorganismenya</td>
+                                    <!-- <td colspan="2">Apapun jenis mikroorganismenya</td> -->
                                 </tr>
                                 <tr>
                                     <td colspan="13">Kultur Cairan Otak/ LCS</td>
                                     <td colspan="2">Apapun jenis mikroorganismenya</td>
-                                    <td colspan="2">Apapun jenis mikroorganismenya</td>
+                                    <!-- <td colspan="2">Apapun jenis mikroorganismenya</td> -->
                                 </tr>
                                 <tr>
                                     <td colspan="13">Kultur Swab Tenggorok (Nasofaring)</td>
                                     <td colspan="2">Corrynebacterium diphteriae</td>
-                                    <td colspan="2">Corrynebacterium diphteriae</td>
+                                    <!-- <td colspan="2">Corrynebacterium diphteriae</td> -->
                                 </tr>
                                 <tr>
                                     <td colspan="13">Malaria</td>
                                     <td colspan="2">Apabila ditemukan Plasmodium</td>
-                                    <td colspan="2">Apabila ditemukan Plasmodium</td>
+                                    <!-- <td colspan="2">Apabila ditemukan Plasmodium</td> -->
                                 </tr>
                             </tbody>
                         </table>

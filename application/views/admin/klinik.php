@@ -41,8 +41,8 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-12 col-sm-12">
                                     <div class="mb-3">
-                                        <label for="noRM" class="form-label">No RM</label>
-                                        <input type="text" class="form-control" id="noRM" onchange="cekRM()" name="no_rekam_medis" placeholder="Masukan No RM">
+                                        <label for="noRM" class="form-label">No RM *</label>
+                                        <input type="text" class="form-control" id="noRM" onchange="cekRM()" name="no_rekam_medis" placeholder="Masukan No RM" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="kodeReg" class="form-label">Kode Registrasi</label>
@@ -56,13 +56,18 @@
                                             <?php } ?>
                                         </select>
                                     </div>
-                                    <div class="mb-3">
+                                    <div class="mb-3" style="display: flex; flex-wrap: wrap;">
                                         <label for="pemeriksaan" class="form-label">Parameter *</label>
-                                        <select name="parameter" class="form-control" id="pemeriksaan" required>
+                                        <div id="pemeriksaan" style="display: flex; flex-wrap: wrap;">
                                             <?php foreach ($this->M_parameter->select()->result() as $key) { ?>
-                                            <option value="<?=$key->nama?>"><?=$key->nama?></option>
+                                                <div class="form-check" style="margin-right: 20px;">
+                                                    <input class="form-check-input" type="checkbox" name="parameter[]" value="<?=$key->nama?>" id="param<?=$key->id?>">
+                                                    <label class="form-check-label" for="param<?=$key->id?>">
+                                                        <?=$key->nama?>
+                                                    </label>
+                                                </div>
                                             <?php } ?>
-                                        </select>
+                                        </div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="cito" class="form-label">CITO</label>
@@ -82,35 +87,39 @@
                                 <div class="col-lg-6 col-md-12 col-sm-12">
                                     <div class="mb-3">
                                         <label for="nik" class="form-label">NIK *</label>
-                                        <input type="number" class="form-control" id="nik" name="nik" placeholder="Masukan NIK">
+                                        <input type="number" class="form-control" id="nik" name="nik" placeholder="Masukan NIK" onchange="cekNik()" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="nama" class="form-label">Nama</label>
-                                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukan nama">
+                                        <label for="nama" class="form-label">Nama *</label>
+                                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukan nama" onchange="cekNama()" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="email" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="Masukan Email">
+                                        <label for="email" class="form-label">Email *</label>
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Masukan Email" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="alamat" class="form-label">Alamat</label>
-                                        <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukan alamat">
+                                        <label for="alamat" class="form-label">Alamat *</label>
+                                        <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukan alamat" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="tempatLahir" class="form-label">Tempat Lahir</label>
-                                        <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Masukan Tempat Lahir">
+                                        <label for="tempatLahir" class="form-label">Tempat Lahir *</label>
+                                        <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Masukan Tempat Lahir" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="tanggalLahir" class="form-label">Tanggal Lahir</label>
-                                        <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" placeholder="Masukan tanggal Lahir">
+                                        <label for="tanggalLahir" class="form-label">Tanggal Lahir *</label>
+                                        <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" placeholder="Masukan tanggal Lahir" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
-                                        <input type="text" class="form-control" id="jenis_kelamin" name="jenis_kelamin" placeholder="Masukan Jenis Kelamin">
+                                        <label for="jenisKelamin" class="form-label">Jenis Kelamin *</label>
+                                        <select name="jenis_kelamin" class="form-control" id="jenisKelamin" required>
+                                            <option value="">Pilih Jenis Kelamin</option>
+                                            <option value="Laki-laki">Laki-laki</option>
+                                            <option value="Perempuan">Perempuan</option>
+                                        </select>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="noHP" class="form-label">No Hp</label>
-                                        <input type="Number" class="form-control" id="no_hp" name="no_hp" placeholder="Masukan No Hp">
+                                        <label for="noHP" class="form-label">No Hp *</label>
+                                        <input type="Number" class="form-control" id="no_hp" name="no_hp" placeholder="Masukan No Hp" required>
                                     </div>
                                 </div>
                             </div>
@@ -131,8 +140,6 @@
                             <tr>
                                 <th>Kode</th>
                                 <th>Nama</th>
-                                <!-- <th>Pemeriksaan</th> -->
-                                <!-- <th>Jenis Sample</th> -->
                                 <th>Status</th>
                                 <th>Tanggal</th>
                                 <th>Action</th>
@@ -174,7 +181,7 @@
     function cekRM()
     {
         let noRM = $('#noRM').val();
-        $.get('<?=base_url()?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/cekRM', 'noRM='+noRM, function(data) {
+        $.get('<?=base_url()?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/cekRM', { noRM: noRM }, function(data) {
             data = JSON.parse(data);
             if (data.status == true){
                 $('#nik').val(data.data.nik);
@@ -183,9 +190,51 @@
                 $('#alamat').val(data.data.alamat);
                 $('#tempat_lahir').val(data.data.tempat_lahir);
                 $('#tanggal_lahir').val(data.data.tanggal_lahir);
-                $('#jenis_kelamin').val(data.data.jenis_kelamin);
+                $('select[name="jenis_kelamin"]').val(data.data.jenis_kelamin);
                 $('#no_hp').val(data.data.no_hp);
+            } else {
+                alert('No RM tidak ditemukan');
             }
-        })
+        });
+    }
+
+    function cekNik()
+    {
+        let nik = $('#nik').val();
+        $.get('<?=base_url()?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/cekNik', { nik: nik }, function(data) {
+            data = JSON.parse(data);
+            if (data.status == true){
+                $('#noRM').val(data.data.no_rekam_medis);
+                $('#nama').val(data.data.nama);
+                $('#email').val(data.data.email);
+                $('#alamat').val(data.data.alamat);
+                $('#tempat_lahir').val(data.data.tempat_lahir);
+                $('#tanggal_lahir').val(data.data.tanggal_lahir);
+                $('select[name="jenis_kelamin"]').val(data.data.jenis_kelamin);
+                $('#no_hp').val(data.data.no_hp);
+            } else {
+                alert('NIK tidak ditemukan');
+            }
+        });
+    }
+
+    function cekNama()
+    {
+        let nama = $('#nama').val();
+        $.get('<?=base_url()?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/cekNama', { nama: nama }, function(data) {
+            data = JSON.parse(data);
+            if (data.status == true){
+                $('#noRM').val(data.data.no_rekam_medis);
+                $('#nik').val(data.data.nik);
+                $('#email').val(data.data.email);
+                $('#alamat').val(data.data.alamat);
+                $('#tempat_lahir').val(data.data.tempat_lahir);
+                $('#tanggal_lahir').val(data.data.tanggal_lahir);
+                $('select[name="jenis_kelamin"]').val(data.data.jenis_kelamin);
+                $('#no_hp').val(data.data.no_hp);
+            } else {
+                alert('Nama tidak ditemukan');
+            }
+        });
     }
 </script>

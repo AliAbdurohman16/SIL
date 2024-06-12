@@ -21,7 +21,6 @@ class M_jenis_pemeriksaan extends CI_Model {
 		$arr = array(
 			'kode'			=> @$data['kode'],
 			'nama'			=> @$data['nama'],
-			'tarif'				=> @$data['tarif'],
 		);
 
 		$response = $this->db->insert('tbl_jenis_pemeriksaan', $arr);
