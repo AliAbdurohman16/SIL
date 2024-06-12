@@ -41,7 +41,7 @@
                                     <p class="mb-0">Silahkan Masukan Email dan Password Anda</p>
                                 </div>
                                 <div class="card-body">
-                                    <form action="<?= base_url() ?>Auth/secure" method="post">
+                                    <form action="<?= base_url() ?>auth/secure" method="post">
                                         <label>Username</label>
                                         <div class="mb-3">
                                             <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="username-addon" name="username">

@@ -55,8 +55,9 @@ $route['translate_uri_dashes'] = FALSE;
 
 // controller yora disini
 
-$route['auth'] = 'Login';
-$route['Auth/secure'] = 'Login/secure';
+$route['auth'] = 'login';
+$route['auth/secure'] = 'login/secure';
+// $route['Auth/aa'] = 'Login/aa';
 
 
 // controller novan disini

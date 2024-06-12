@@ -1,14 +1,14 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Login extends CI_Controller {
+class Login extends CI_Controller
+{
 
-    public function index()
+	public function index()
 	{
-		if ($this->session->userdata('status') != null)
-		{
+		if ($this->session->userdata('status') != null) {
 			redirect('admin/home');
-		}else{
+		} else {
 			$this->load->view('auth/login');
 		}
 	}
@@ -20,8 +20,8 @@ class Login extends CI_Controller {
 		$password = trim($data['password']);
 
 		$data = $this->db->get_where('tbl_user', ['username' => $username, 'password' => md5($password)]);
-		
-		if ($data->num_rows() == 0) {			
+
+		if ($data->num_rows() == 0) {
 			$flash_data = [
 				'error' => 'Username atau Password salah',
 				'username' => $username,
@@ -34,9 +34,9 @@ class Login extends CI_Controller {
 				'userdata' => $data->row(),
 				'status' => "Loged in"
 			];
-			
 
-			$this->session->set_userdata('file_manager',true);
+
+			$this->session->set_userdata('file_manager', true);
 			$this->session->set_userdata($session);
 
 			$flash_data = [
