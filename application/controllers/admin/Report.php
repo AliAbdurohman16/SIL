@@ -91,6 +91,10 @@ class Report extends AUTH_Controller {
         $writer = PHPExcel_IOFactory::createwriter($object, 'Excel2007');
         $writer->save('php://output');
 
-        exit;
+        if ($writer){
+			$this->session->set_flashdata('msg', swal("succ", "Data berhasil export."));
+		}else{
+			$this->session->set_flashdata('msg', swal("err", "Data gagal export. Data kosong atau terjadi kegagalan yang lain!"));
+		}
     }
 }

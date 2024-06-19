@@ -1,3 +1,15 @@
+<style>
+    /* Atur z-index untuk Select2 agar muncul di depan kartu */
+    .select2-container--open {
+        z-index: 10000 !important; /* Atur nilai z-index yang cukup tinggi */
+    }
+
+    /* Atur posisi relatif untuk parent dari Select2 agar z-index bekerja */
+    .modal-body {
+        position: relative;
+    }
+</style>
+
 <?=$this->session->flashdata('msg')?>
 <div class="container-fluid py-4">
     <div class="row my-4">
@@ -42,32 +54,28 @@
                                 <div class="col-lg-6 col-md-12 col-sm-12">
                                     <div class="mb-3">
                                         <label for="noRM" class="form-label">No RM *</label>
-                                        <input type="text" class="form-control" id="noRM" onchange="cekRM()" name="no_rekam_medis" placeholder="Masukan No RM" required>
+                                        <input type="text" class="form-control" id="noRM" onchange="cekRM()" name="no_rekam_medis" placeholder="Masukan No RM" value="<?=$this->M_customers->generateCode()?>" readonly>
                                     </div>
                                     <div class="mb-3">
                                         <label for="kodeReg" class="form-label">Kode Registrasi</label>
-                                        <input type="text" class="form-control" id="kodeReg" name="kode_registrasi" placeholder="Masukan Kode Reg" value="<?=$this->M_pemeriksaan->generateCode()?>">
+                                        <input type="text" class="form-control" id="kodeReg" name="kode_registrasi" placeholder="Masukan Kode Reg" value="<?=$this->M_pemeriksaan->generateCode()?>" readonly>
                                     </div>
                                     <div class="mb-3">
                                         <label for="jenisPem" class="form-label">Jenis Pemeriksaan *</label>
                                         <select name="jenis_pemeriksaan" class="form-control" id="jenisPem" required>
+                                            <option value="">Pilih Jenis Pemeriksaan</option>
                                             <?php foreach ($this->M_jenis_pemeriksaan->select()->result() as $key) { ?>
                                             <option value="<?=$key->nama?>"><?=$key->nama?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
-                                    <div class="mb-3" style="display: flex; flex-wrap: wrap;">
+                                    <div class="mb-3">
                                         <label for="pemeriksaan" class="form-label">Parameter *</label>
-                                        <div id="pemeriksaan" style="display: flex; flex-wrap: wrap;">
+                                        <select name="parameter[]" class="form-control" id="parameter" multiple="multiple" style="width: 100%" required>
                                             <?php foreach ($this->M_parameter->select()->result() as $key) { ?>
-                                                <div class="form-check" style="margin-right: 20px;">
-                                                    <input class="form-check-input" type="checkbox" name="parameter[]" value="<?=$key->nama?>" id="param<?=$key->id?>">
-                                                    <label class="form-check-label" for="param<?=$key->id?>">
-                                                        <?=$key->nama?>
-                                                    </label>
-                                                </div>
+                                                <option value="<?=$key->nama?>"><?=$key->nama?></option>
                                             <?php } ?>
-                                        </div>
+                                        </select>
                                     </div>
                                     <div class="mb-3">
                                         <label for="cito" class="form-label">CITO</label>
@@ -170,12 +178,17 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
-
 <script>
     $(document).ready(function() {
         $('#myTable').DataTable({
             "ordering": false,
         });
+
+        $('#parameter').select2({
+                tags: true,
+                placeholder: 'Pilih Parameter',
+                allowClear: true
+            });
     });
 
     function cekRM()
