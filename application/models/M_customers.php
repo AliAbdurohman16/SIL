@@ -48,6 +48,29 @@ class M_customers extends CI_Model {
 
 		return $this->db->delete('tbl_customers', $arr);
 	}
+
+	public function generateCode()
+	{
+		$getData = $this->db->order_by('no_rekam_medis', 'DESC')->get('tbl_customers');
+		if ($getData->num_rows() > 0){
+			$getData = $getData->row();
+			$getNumber = substr($getData->no_rekam_medis, 0, 4) + 1;
+			if (strlen($getNumber) == 1){
+				$nol = "000";
+			}else if(strlen($getNumber) == 2){
+				$nol = "00";
+			}else if(strlen($getNumber) == 3){
+				$nol = "0";
+			}else if(strlen($getNumber) == 4){
+				$nol = "";
+			}
+			$autoGen = $nol.$getNumber."/SIL/RM/".date('m')."/".date('Y');
+		}else{
+			$autoGen = "0001/SIL/RM/".date('m')."/".date('Y');
+		}
+
+		return $autoGen;
+	}
 }
 
 /* End of file M_admin.php */
