@@ -37,6 +37,8 @@ class Report extends AUTH_Controller {
     // }
 
     public function prosess(){
+        ob_start(); // Start output buffering
+
         $start_date = $this->input->post('start_date');
         $end_date = $this->input->post('end_date');
     
@@ -96,5 +98,7 @@ class Report extends AUTH_Controller {
 		}else{
 			$this->session->set_flashdata('msg', swal("err", "Data gagal export. Data kosong atau terjadi kegagalan yang lain!"));
 		}
+
+        ob_end_flush(); // Flush output buffer
     }
 }
