@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jun 11, 2024 at 06:23 PM
--- Server version: 5.7.39
--- PHP Version: 7.4.33
+-- Waktu pembuatan: 24 Jun 2024 pada 05.15
+-- Versi server: 5.7.39
+-- Versi PHP: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_customers`
+-- Struktur dari tabel `tbl_customers`
 --
 
 CREATE TABLE `tbl_customers` (
@@ -41,7 +41,7 @@ CREATE TABLE `tbl_customers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_customers`
+-- Dumping data untuk tabel `tbl_customers`
 --
 
 INSERT INTO `tbl_customers` (`id`, `no_rekam_medis`, `nik`, `nama`, `email`, `alamat`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `no_hp`) VALUES
@@ -51,7 +51,7 @@ INSERT INTO `tbl_customers` (`id`, `no_rekam_medis`, `nik`, `nama`, `email`, `al
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_detail_pembayaran`
+-- Struktur dari tabel `tbl_detail_pembayaran`
 --
 
 CREATE TABLE `tbl_detail_pembayaran` (
@@ -62,18 +62,24 @@ CREATE TABLE `tbl_detail_pembayaran` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tbl_detail_pembayaran`
+-- Dumping data untuk tabel `tbl_detail_pembayaran`
 --
 
 INSERT INTO `tbl_detail_pembayaran` (`id`, `invoice`, `parameter`, `tarif`) VALUES
 (39, 'INV5202', 'Glukosa 2 Jam PP', '40000'),
 (40, 'INV5202', 'Ureum', '65000'),
-(41, 'INV5202', 'Creatinin', '65000');
+(41, 'INV5202', 'Creatinin', '65000'),
+(42, 'INV8668', 'Glukosa Puasa', '40000'),
+(43, 'INV8668', 'Glukosa 2 Jam PP', '40000'),
+(44, 'INV8668', 'Creatinin', '65000'),
+(45, 'INV8668', 'Alkali Phospatase', '60000'),
+(46, 'INV1113', 'Glukosa Puasa', '40000'),
+(47, 'INV1113', 'Glukosa 2 Jam PP', '40000');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_hasil_pemeriksaan`
+-- Struktur dari tabel `tbl_hasil_pemeriksaan`
 --
 
 CREATE TABLE `tbl_hasil_pemeriksaan` (
@@ -87,18 +93,24 @@ CREATE TABLE `tbl_hasil_pemeriksaan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_hasil_pemeriksaan`
+-- Dumping data untuk tabel `tbl_hasil_pemeriksaan`
 --
 
 INSERT INTO `tbl_hasil_pemeriksaan` (`hasil_id`, `kode_registrasi`, `parameter`, `hasil`, `tgl_pengujian`, `tgl_selesai`, `dokter`) VALUES
 (66, '0001/REG/SIL/06/2024', 'Glukosa 2 Jam PP', 0, NULL, NULL, NULL),
 (67, '0001/REG/SIL/06/2024', 'Ureum', 0, NULL, NULL, NULL),
-(68, '0001/REG/SIL/06/2024', 'Creatinin', 0, NULL, NULL, NULL);
+(68, '0001/REG/SIL/06/2024', 'Creatinin', 0, NULL, NULL, NULL),
+(69, '0002/REG/SIL/06/2024', 'Glukosa Puasa', 0, NULL, NULL, NULL),
+(70, '0002/REG/SIL/06/2024', 'Glukosa 2 Jam PP', 0, NULL, NULL, NULL),
+(71, '0002/REG/SIL/06/2024', 'Creatinin', 0, NULL, NULL, NULL),
+(72, '0002/REG/SIL/06/2024', 'Alkali Phospatase', 0, NULL, NULL, NULL),
+(73, '0003/REG/SIL/06/2024', 'Glukosa Puasa', 0, NULL, NULL, NULL),
+(74, '0003/REG/SIL/06/2024', 'Glukosa 2 Jam PP', 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_jenis_pemeriksaan`
+-- Struktur dari tabel `tbl_jenis_pemeriksaan`
 --
 
 CREATE TABLE `tbl_jenis_pemeriksaan` (
@@ -108,7 +120,7 @@ CREATE TABLE `tbl_jenis_pemeriksaan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_jenis_pemeriksaan`
+-- Dumping data untuk tabel `tbl_jenis_pemeriksaan`
 --
 
 INSERT INTO `tbl_jenis_pemeriksaan` (`id`, `kode`, `nama`) VALUES
@@ -120,7 +132,7 @@ INSERT INTO `tbl_jenis_pemeriksaan` (`id`, `kode`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_parameter`
+-- Struktur dari tabel `tbl_parameter`
 --
 
 CREATE TABLE `tbl_parameter` (
@@ -132,7 +144,7 @@ CREATE TABLE `tbl_parameter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_parameter`
+-- Dumping data untuk tabel `tbl_parameter`
 --
 
 INSERT INTO `tbl_parameter` (`id`, `kode`, `nama`, `satuan`, `tarif`) VALUES
@@ -160,7 +172,7 @@ INSERT INTO `tbl_parameter` (`id`, `kode`, `nama`, `satuan`, `tarif`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_pembayaran`
+-- Struktur dari tabel `tbl_pembayaran`
 --
 
 CREATE TABLE `tbl_pembayaran` (
@@ -175,16 +187,18 @@ CREATE TABLE `tbl_pembayaran` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tbl_pembayaran`
+-- Dumping data untuk tabel `tbl_pembayaran`
 --
 
 INSERT INTO `tbl_pembayaran` (`id`, `invoice`, `kode_registrasi`, `nama`, `jenis_pemeriksaan`, `tanggal`, `status`, `total`) VALUES
-(22, 'INV5202', '0001/REG/SIL/06/2024', 'Mohammad Teguh Adriansyah', 'Kimia Klinik', '2024-06-11 12:48:02', 'Sudah Bayar', '170000');
+(22, 'INV5202', '0001/REG/SIL/06/2024', 'Mohammad Teguh Adriansyah', 'Kimia Klinik', '2024-06-11 12:48:02', 'Sudah Bayar', '170000'),
+(23, 'INV8668', '0002/REG/SIL/06/2024', 'Mohammad Teguh Adriansyah', 'Hematologi', '2024-06-19 16:34:59', 'Sudah Bayar', '205000'),
+(24, 'INV1113', '0003/REG/SIL/06/2024', 'Mohammad Teguh Adriansyah', 'Kimia Klinik', '2024-06-19 16:39:46', 'Sudah Bayar', '80000');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_pemeriksaan`
+-- Struktur dari tabel `tbl_pemeriksaan`
 --
 
 CREATE TABLE `tbl_pemeriksaan` (
@@ -199,16 +213,18 @@ CREATE TABLE `tbl_pemeriksaan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_pemeriksaan`
+-- Dumping data untuk tabel `tbl_pemeriksaan`
 --
 
 INSERT INTO `tbl_pemeriksaan` (`id`, `no_rekam_medis`, `kode_registrasi`, `jenis_pemeriksaan`, `catatan`, `isCito`, `status`, `tanggal`) VALUES
-(37, '0003/SIL/RM/03/2024', '0001/REG/SIL/06/2024', 'Kimia Klinik', 'Coba', 1, 'AKTIF', '2024-06-11 12:48:02');
+(37, '0003/SIL/RM/03/2024', '0001/REG/SIL/06/2024', 'Kimia Klinik', 'Coba', 1, 'AKTIF', '2024-06-11 12:48:02'),
+(38, '0003/SIL/RM/03/2024', '0002/REG/SIL/06/2024', 'Hematologi', 'cek\r\n', 0, 'AKTIF', '2024-06-19 16:34:58'),
+(39, '0003/SIL/RM/03/2024', '0003/REG/SIL/06/2024', 'Kimia Klinik', 'COba', 1, 'AKTIF', '2024-06-19 16:39:46');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_status`
+-- Struktur dari tabel `tbl_status`
 --
 
 CREATE TABLE `tbl_status` (
@@ -219,7 +235,7 @@ CREATE TABLE `tbl_status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_status`
+-- Dumping data untuk tabel `tbl_status`
 --
 
 INSERT INTO `tbl_status` (`status_id`, `code`, `seq`, `status_nama`) VALUES
@@ -231,7 +247,7 @@ INSERT INTO `tbl_status` (`status_id`, `code`, `seq`, `status_nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_user`
+-- Struktur dari tabel `tbl_user`
 --
 
 CREATE TABLE `tbl_user` (
@@ -245,7 +261,7 @@ CREATE TABLE `tbl_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_user`
+-- Dumping data untuk tabel `tbl_user`
 --
 
 INSERT INTO `tbl_user` (`id_user`, `nama`, `photo`, `no_hp`, `username`, `password`, `role`) VALUES
@@ -258,7 +274,7 @@ INSERT INTO `tbl_user` (`id_user`, `nama`, `photo`, `no_hp`, `username`, `passwo
 --
 
 --
--- Indexes for table `tbl_customers`
+-- Indeks untuk tabel `tbl_customers`
 --
 ALTER TABLE `tbl_customers`
   ADD PRIMARY KEY (`id`),
@@ -267,7 +283,7 @@ ALTER TABLE `tbl_customers`
   ADD KEY `nama` (`nama`);
 
 --
--- Indexes for table `tbl_detail_pembayaran`
+-- Indeks untuk tabel `tbl_detail_pembayaran`
 --
 ALTER TABLE `tbl_detail_pembayaran`
   ADD PRIMARY KEY (`id`),
@@ -275,7 +291,7 @@ ALTER TABLE `tbl_detail_pembayaran`
   ADD KEY `invoice` (`invoice`);
 
 --
--- Indexes for table `tbl_hasil_pemeriksaan`
+-- Indeks untuk tabel `tbl_hasil_pemeriksaan`
 --
 ALTER TABLE `tbl_hasil_pemeriksaan`
   ADD PRIMARY KEY (`hasil_id`),
@@ -284,21 +300,21 @@ ALTER TABLE `tbl_hasil_pemeriksaan`
   ADD KEY `dokter` (`dokter`);
 
 --
--- Indexes for table `tbl_jenis_pemeriksaan`
+-- Indeks untuk tabel `tbl_jenis_pemeriksaan`
 --
 ALTER TABLE `tbl_jenis_pemeriksaan`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `nama` (`nama`);
 
 --
--- Indexes for table `tbl_parameter`
+-- Indeks untuk tabel `tbl_parameter`
 --
 ALTER TABLE `tbl_parameter`
   ADD PRIMARY KEY (`id`),
   ADD KEY `nama` (`nama`);
 
 --
--- Indexes for table `tbl_pembayaran`
+-- Indeks untuk tabel `tbl_pembayaran`
 --
 ALTER TABLE `tbl_pembayaran`
   ADD PRIMARY KEY (`id`),
@@ -308,7 +324,7 @@ ALTER TABLE `tbl_pembayaran`
   ADD KEY `invoice` (`invoice`);
 
 --
--- Indexes for table `tbl_pemeriksaan`
+-- Indeks untuk tabel `tbl_pemeriksaan`
 --
 ALTER TABLE `tbl_pemeriksaan`
   ADD PRIMARY KEY (`id`),
@@ -318,90 +334,90 @@ ALTER TABLE `tbl_pemeriksaan`
   ADD KEY `jenis_pemeriksaan` (`jenis_pemeriksaan`);
 
 --
--- Indexes for table `tbl_status`
+-- Indeks untuk tabel `tbl_status`
 --
 ALTER TABLE `tbl_status`
   ADD PRIMARY KEY (`status_id`),
   ADD UNIQUE KEY `code` (`code`);
 
 --
--- Indexes for table `tbl_user`
+-- Indeks untuk tabel `tbl_user`
 --
 ALTER TABLE `tbl_user`
   ADD PRIMARY KEY (`id_user`),
   ADD KEY `nama` (`nama`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `tbl_customers`
+-- AUTO_INCREMENT untuk tabel `tbl_customers`
 --
 ALTER TABLE `tbl_customers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `tbl_detail_pembayaran`
+-- AUTO_INCREMENT untuk tabel `tbl_detail_pembayaran`
 --
 ALTER TABLE `tbl_detail_pembayaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
--- AUTO_INCREMENT for table `tbl_hasil_pemeriksaan`
+-- AUTO_INCREMENT untuk tabel `tbl_hasil_pemeriksaan`
 --
 ALTER TABLE `tbl_hasil_pemeriksaan`
-  MODIFY `hasil_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `hasil_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
--- AUTO_INCREMENT for table `tbl_jenis_pemeriksaan`
+-- AUTO_INCREMENT untuk tabel `tbl_jenis_pemeriksaan`
 --
 ALTER TABLE `tbl_jenis_pemeriksaan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `tbl_parameter`
+-- AUTO_INCREMENT untuk tabel `tbl_parameter`
 --
 ALTER TABLE `tbl_parameter`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT for table `tbl_pembayaran`
+-- AUTO_INCREMENT untuk tabel `tbl_pembayaran`
 --
 ALTER TABLE `tbl_pembayaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT for table `tbl_pemeriksaan`
+-- AUTO_INCREMENT untuk tabel `tbl_pemeriksaan`
 --
 ALTER TABLE `tbl_pemeriksaan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
--- AUTO_INCREMENT for table `tbl_status`
+-- AUTO_INCREMENT untuk tabel `tbl_status`
 --
 ALTER TABLE `tbl_status`
   MODIFY `status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `tbl_user`
+-- AUTO_INCREMENT untuk tabel `tbl_user`
 --
 ALTER TABLE `tbl_user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `tbl_detail_pembayaran`
+-- Ketidakleluasaan untuk tabel `tbl_detail_pembayaran`
 --
 ALTER TABLE `tbl_detail_pembayaran`
   ADD CONSTRAINT `tbl_detail_pembayaran_ibfk_1` FOREIGN KEY (`parameter`) REFERENCES `tbl_parameter` (`nama`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tbl_detail_pembayaran_ibfk_2` FOREIGN KEY (`invoice`) REFERENCES `tbl_pembayaran` (`invoice`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `tbl_hasil_pemeriksaan`
+-- Ketidakleluasaan untuk tabel `tbl_hasil_pemeriksaan`
 --
 ALTER TABLE `tbl_hasil_pemeriksaan`
   ADD CONSTRAINT `tbl_hasil_pemeriksaan_ibfk_1` FOREIGN KEY (`kode_registrasi`) REFERENCES `tbl_pemeriksaan` (`kode_registrasi`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -409,7 +425,7 @@ ALTER TABLE `tbl_hasil_pemeriksaan`
   ADD CONSTRAINT `tbl_hasil_pemeriksaan_ibfk_3` FOREIGN KEY (`dokter`) REFERENCES `tbl_user` (`nama`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `tbl_pembayaran`
+-- Ketidakleluasaan untuk tabel `tbl_pembayaran`
 --
 ALTER TABLE `tbl_pembayaran`
   ADD CONSTRAINT `tbl_pembayaran_ibfk_1` FOREIGN KEY (`kode_registrasi`) REFERENCES `tbl_pemeriksaan` (`kode_registrasi`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -417,7 +433,7 @@ ALTER TABLE `tbl_pembayaran`
   ADD CONSTRAINT `tbl_pembayaran_ibfk_3` FOREIGN KEY (`nama`) REFERENCES `tbl_customers` (`nama`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `tbl_pemeriksaan`
+-- Ketidakleluasaan untuk tabel `tbl_pemeriksaan`
 --
 ALTER TABLE `tbl_pemeriksaan`
   ADD CONSTRAINT `tbl_pemeriksaan_ibfk_1` FOREIGN KEY (`status`) REFERENCES `tbl_status` (`code`) ON DELETE CASCADE ON UPDATE CASCADE,
