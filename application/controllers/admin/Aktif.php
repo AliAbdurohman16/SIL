@@ -44,8 +44,6 @@ class Aktif extends AUTH_Controller {
                 $result = $this->M_hasil_pemeriksaan->insert($arr);
             }
 
-            // $this->M_pemeriksaan->update(['id' => $data['id'], 'status' => 'VERIF']);
-
             if ($result){
                 $this->session->set_flashdata('msg', swal("succ", "Data berhasil diubah."));
             }else{
