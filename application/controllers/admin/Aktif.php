@@ -39,11 +39,12 @@ class Aktif extends AUTH_Controller {
                     'parameter'         => $data['parameter'][$i],
                     'hasil'             => $data['hasil'][$i] ?? 0,
                     'tgl_pengujian'     => $data['tgl_pengujian'][$i] ?? null,
-                    'tgl_selesai'       => $data['tgl_selesai'][$i] ?? null
+                    'tgl_selesai'       => $data['tgl_selesai'][$i] ?? null,
                 );
                 $result = $this->M_hasil_pemeriksaan->insert($arr);
             }
 
+            // $this->M_pemeriksaan->update(['id' => $data['id'], 'status' => 'VERIF']);
 
             if ($result){
                 $this->session->set_flashdata('msg', swal("succ", "Data berhasil diubah."));

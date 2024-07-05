@@ -13,7 +13,7 @@ class HasilLaboratorium extends AUTH_Controller {
 	public function index()
 	{
         $data = [
-            'title' => "Informasi Nilai Kritis",
+            'title' => "Hasil Laboratorium",
             'data'  => $this->M_hasil_pemeriksaan->selectJoin()->result()
         ];
         $this->load->view('admin/partials/header', $data);

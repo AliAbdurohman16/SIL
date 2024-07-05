@@ -56,29 +56,7 @@ class Validasi extends AUTH_Controller {
         }
 		redirect($this->uri->segment(1)."/".$this->uri->segment(2));
 	}
-	
-    public function verifnow($id)
-    {
-        $arr = array(
-            'status'    => 'VERIF',
-            'id'        => $id
-        );
-
-        $cekData = $this->M_pemeriksaan->select('', ['tbl_pemeriksaan.id' => $id]);
-        if ($cekData->num_rows() > 0){
-            $result = $this->M_pemeriksaan->update($arr);
-
-            if ($result){
-                $this->session->set_flashdata('msg', swal("succ", "Data berhasil diverifikasi."));
-            }else{
-                $this->session->set_flashdata('msg', swal("err", "Data gagal diverifikasi."));
-            }
-        }else{
-            $this->session->set_flashdata('msg', swal("err", "Data gagal diverifikasi."));
-        }
-		redirect($this->uri->segment(1)."/".$this->uri->segment(2));
-    }
-
+    
     public function validnow($id)
     {
         $cekData = $this->M_pemeriksaan->select('', ['tbl_pemeriksaan.id' => $id]);

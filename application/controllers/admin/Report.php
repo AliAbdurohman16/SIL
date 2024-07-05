@@ -11,7 +11,7 @@ class Report extends AUTH_Controller {
     public function index()
     {
         $data = [
-            'title' => "Laporan",
+            'title' => "Report",
         ];
 
         $this->load->view('admin/partials/header', $data);
@@ -26,7 +26,7 @@ class Report extends AUTH_Controller {
         $end_date = $this->input->post('end_date');
 
         $data = [
-            'title'         => "Laporan",
+            'title'         => "Hasil Laporan",
             'data'          => $this->M_detail_pembayaran->report($start_date, $end_date)->result(),
             'start_date'    => $start_date,
             'end_date'      => $end_date

@@ -13,7 +13,7 @@ class Selesai extends AUTH_Controller {
 	{
         $data = [
             'title' => "Selesai",
-            'data'  => $this->M_pemeriksaan->select('', ['status' => 'SELESAI'])->result()
+            'data'  => $this->M_pemeriksaan->select('', ['status' => 'VALID'])->result()
         ];
         $this->load->view('admin/partials/header', $data);
         $this->load->view('admin/partials/sidenav', $data);
@@ -56,7 +56,7 @@ class Selesai extends AUTH_Controller {
 		redirect($this->uri->segment(1)."/".$this->uri->segment(2));
 	}
 	
-    public function verifnow($id)
+    public function selesainow($id)
     {
         $arr = array(
             'status'    => 'SELESAI',
