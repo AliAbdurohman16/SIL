@@ -68,12 +68,12 @@ class Selesai extends AUTH_Controller {
             $result = $this->M_pemeriksaan->update($arr);
 
             if ($result){
-                $this->session->set_flashdata('msg', swal("succ", "Data berhasil diverifikasi."));
+                $this->session->set_flashdata('msg', swal("succ", "Data berhasil diselesaikan."));
             }else{
-                $this->session->set_flashdata('msg', swal("err", "Data gagal diverifikasi."));
+                $this->session->set_flashdata('msg', swal("err", "Data gagal diselesaikan."));
             }
         }else{
-            $this->session->set_flashdata('msg', swal("err", "Data gagal diverifikasi."));
+            $this->session->set_flashdata('msg', swal("err", "Data gagal diselesaikan."));
         }
 		redirect($this->uri->segment(1)."/".$this->uri->segment(2));
     }

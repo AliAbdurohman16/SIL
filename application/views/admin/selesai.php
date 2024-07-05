@@ -53,22 +53,22 @@
                                         <button class="btn <?=($key->isCito)?"btn-success":"btn-success"?>" data-bs-toggle="modal" data-bs-target="#hasilModal<?=$key->id?>">
                                             <i class="fa fa-edit"></i> HASIL
                                         </button>
-                                        <?php if ($key->status == "AKTIF") { ?>
+                                        <?php if ($key->status == "VALID") { ?>
                                         <button class="btn <?=($key->isCito)?"btn-info":"btn-info"?>" data-bs-toggle="modal" data-bs-target="#verifModal<?=$key->id?>">
-                                            <i class="fa fa-check"></i> VERIFIKASI
+                                            <i class="fa fa-check"></i> SELESAI
                                         </button>
                                         <?php } ?>
                                         <div class="modal fade " id="verifModal<?=$key->id?>" tabindex="-1" aria-labelledby="delete" aria-hidden="true">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="largeModalLabel">Verifikasi</h5>
+                                                        <h5 class="modal-title" id="largeModalLabel">Selesai</h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
                                                         <!-- Formulir -->
-                                                        <form action="<?= base_url() ?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/verifnow/<?= $key->id ?>" method="post">
-                                                            Apakah Anda Yakin ingin memverifikasi Data?
+                                                        <form action="<?= base_url() ?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/selesainow/<?= $key->id ?>" method="post">
+                                                            <p>Apakah Anda Yakin ingin menyelesaikan Data?</p>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
@@ -126,7 +126,6 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                                                        <button type="submit" class="btn btn-info">Simpan</button>
                                                     </div>
                                                         </form>
                                                 </div>

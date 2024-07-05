@@ -5,6 +5,7 @@ class HasilLaboratorium extends AUTH_Controller {
 	function __construct()
 	{
 		parent::__construct();
+        $this->load->model('M_pemeriksaan');
         $this->load->model('M_hasil_pemeriksaan');
         $this->load->library('email');
 	}
@@ -14,7 +15,7 @@ class HasilLaboratorium extends AUTH_Controller {
 	{
         $data = [
             'title' => "Hasil Laboratorium",
-            'data'  => $this->M_hasil_pemeriksaan->selectJoin()->result()
+            'data'  => $this->M_pemeriksaan->select('', ['status' => 'SELESAI'])->result()
         ];
         $this->load->view('admin/partials/header', $data);
         $this->load->view('admin/partials/sidenav', $data);

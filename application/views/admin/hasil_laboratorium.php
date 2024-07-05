@@ -23,6 +23,7 @@
         </div>
     </div>
     <div class="row my-4">
+        
         <div class="col-xl-12 col-sm-12">
             <div class="card">
                 <div class="card-body">
@@ -31,40 +32,107 @@
                             <tr>
                                 <th>Kode</th>
                                 <th>Nama</th>
-                                <th>Parameter</th>
-                                <th>Hasil</th>
-                                <th>Tgl Pengujian</th>
-                                <th>Tgl Selesai</th>
+                                <th>Jenis Pemeriksaan</th>
+                                <th>Status</th>
+                                <th>Tanggal</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($data as $key) { ?>
-                                <tr>
+                                <tr class="<?=($key->isCito)?"bg bg-danger text-white":""?>">
                                     <td><?= $key->kode_registrasi ?></td>
                                     <td><?= $key->nama ?></td>
-                                    <td><?= $key->parameter ?></td>
-                                    <td><?= $key->hasil ?> <?= $key->satuan ?></td>
-                                    <td><?= date('d-m-Y H:i:s', strtotime($key->tgl_pengujian) ) ?></td>
-                                    <td><?= date('d-m-Y H:i:s', strtotime($key->tgl_selesai) ) ?></td>
+                                    <td><?= $key->jenis_pemeriksaan ?></td>
+                                    <td><?= $key->status_nama ?></td>
+                                    <td><?= $key->tanggal ?></td>
                                     <td>
-                                        <a href="<?= base_url() ?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/exportPDF/<?= $key->hasil_id ?>">
-                                            <button class="btn btn-danger">
-                                                <i class="fa fa-file-pdf"></i> Export PDF
-                                            </button>
-                                        </a>
-                                        <!-- <a href="<?= base_url() ?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/sendEmail/<?= $key->hasil_id ?>">
-                                            <button class="btn btn-info">
-                                                <i class="fa fa-envelope"></i> Kirim Email
-                                            </button>
-                                        </a> -->
-                                        <form action="<?= base_url() ?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/sendEmail/<?= $key->hasil_id ?>" method="post">
-                                            <button type="submit" class="btn btn-info">
-                                                <i class="fa fa-envelope"></i> Kirim Email
-                                            </button>
-                                        </form>
+
+                                        <button class="btn <?=($key->isCito)?"btn-success":"btn-success"?>" data-bs-toggle="modal" data-bs-target="#hasilModal<?=$key->id?>">
+                                            <i class="fa fa-edit"></i> HASIL
+                                        </button>
+                                        <?php if ($key->status == "AKTIF") { ?>
+                                        <button class="btn <?=($key->isCito)?"btn-info":"btn-info"?>" data-bs-toggle="modal" data-bs-target="#verifModal<?=$key->id?>">
+                                            <i class="fa fa-check"></i> VERIFIKASI
+                                        </button>
+                                        <?php } ?>
+                                        <div class="modal fade " id="verifModal<?=$key->id?>" tabindex="-1" aria-labelledby="delete" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="largeModalLabel">Verifikasi</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <!-- Formulir -->
+                                                        <form action="<?= base_url() ?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/verifnow/<?= $key->id ?>" method="post">
+                                                            Apakah Anda Yakin ingin memverifikasi Data?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                                        <button type="submit" class="btn btn-info">Simpan</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal fade bd-example-modal-lg" id="hasilModal<?=$key->id?>" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="largeModalLabel">Hasil Pemeriksaan</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <!-- Formulir -->
+                                                        <form>
+                                                            <div class="row">
+                                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                                    <div class="mb-3">
+                                                                        <label for="noRM" class="form-label">Nama</label>
+                                                                        <input type="text" class="form-control" id="noRM" placeholder="Nama" name="nama" value="<?=$key->nama?>" readonly>
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="jenis_pemeriksaan" class="form-label">Jenis Pemeriksaan</label>
+                                                                        <input type="text" class="form-control" id="jenis_pemeriksaan" placeholder="jenis_pemeriksaan" required name="jenis_pemeriksaan" value="<?=$key->jenis_pemeriksaan?>" readonly>
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <table class="display" width="100%">
+                                                                            <thead>
+                                                                                <tr class="text-dark">
+                                                                                    <th>Parameter</th>
+                                                                                    <th>Hasil</th>
+                                                                                    <th>Tgl Pengujian</th>
+                                                                                    <th>Tgl Selesai</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <?php foreach ($this->M_hasil_pemeriksaan->select('', ['kode_registrasi' => $key->kode_registrasi])->result() as $value) { ?>
+                                                                                    <tr>
+                                                                                        <td><input type="text" class="form-control" name="parameter[]" value="<?=$value->parameter ?? null?>" readonly></td>
+                                                                                        <td><input type="text" class="form-control" name="hasil[]" value="<?=$value->hasil ?? 0?> mg/dL" readonly></td>
+                                                                                        <td><input type="date" class="form-control" name="tgl_pengujian[]" value="<?=($value->tgl_pengujian != "") ? date_format(date_create($value->tgl_pengujian), "Y-m-d") : null?>" readonly></td>
+                                                                                        <td><input type="date" class="form-control" name="tgl_selesai[]" value="<?=($value->tgl_selesai != "") ? date_format(date_create($value->tgl_selesai), "Y-m-d") : null?>" readonly></td>
+                                                                                    </tr>
+                                                                                <?php } ?>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                                    </div>
+                                                        </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
+                                    
                                 </tr>
+                                
                             <?php } ?>
                         </tbody>
                     </table>
