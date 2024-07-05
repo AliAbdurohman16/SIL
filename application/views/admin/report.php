@@ -26,7 +26,7 @@
         <div class="col-xl-6 col-sm-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="<?= base_url() ?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/prosess" method="post">
+                    <form action="<?= base_url() ?><?=$this->uri->segment(1)?>/<?=$this->uri->segment(2)?>/prosess" method="post" target="_blank">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <div class="mb-3">

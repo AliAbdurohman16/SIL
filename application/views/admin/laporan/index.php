@@ -1,3 +1,10 @@
+<style>
+    @media print {
+        @page {
+            size: landscape;
+        }
+    }
+</style>
 <div class="mt-5">
     <div class="col-xl-12 col-sm-12">
         <div class="card">
